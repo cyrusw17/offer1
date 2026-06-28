@@ -1,101 +1,103 @@
-# Deploy groundwork-web.com (cPanel)
+# Deploy groundwork-web.com (Namecheap / shared cPanel)
 
 **Domain:** `groundwork-web.com`  
-**cPanel user:** `grouevbi`  
-**GitHub repo:** https://github.com/cyrusw17/offer1.git  
-**Server repo path:** `/home/grouevbi/repositories/offer1/`
+**cPanel user:** `grouevbi`
 
 ---
 
-## Step 1 — Attach domain to the repo (one time)
+## Why you can't change the document root
 
-**cPanel → Domains → groundwork-web.com → Document Root**
-
-Set to:
+On **Namecheap shared hosting**, `groundwork-web.com` is usually your **primary domain**. cPanel **does not allow** changing the document root for the main domain — it stays:
 
 ```
-/home/grouevbi/repositories/offer1/public
+/home/grouevbi/public_html/
 ```
 
-Save. This replaces the default `public_html` parking page for this domain.
+You won't see "New Document Root" on the Manage screen, or the field will be greyed out. **That's normal.**
+
+**Solution:** Git deploy **copies** your site into `public_html` automatically via `.cpanel.yml`.
 
 ---
 
-## Step 2 — Pull and deploy from GitHub
+## Where to look (if you still want to check)
 
-**cPanel → Git Version Control → offer1**
+**cPanel home → search bar → type `Domains`**
 
-1. **Update from Remote** (branch: `main`)
+Try these (depends on your skin):
+
+| Menu item | What to do |
+|-----------|------------|
+| **Domains** → find `groundwork-web.com` → **Manage** | Look for "Document Root" (often read-only for primary domain) |
+| **Addon Domains** | Only if you added the domain as an addon |
+| **Subdomains** | Not needed here |
+
+If there's no editable field, use the deploy steps below instead.
+
+---
+
+## Deploy steps (use this)
+
+### 1. Pull + deploy from GitHub
+
+**Git Version Control → offer1**
+
+1. **Update from Remote** (branch `main`)
 2. **Deploy HEAD Commit**
 
-Enable **File Manager → Settings → Show Hidden Files** and confirm `.cpanel.yml` exists in `repositories/offer1/`.
+This copies files to `public_html` and app folders to your home directory.
 
----
+### 2. Remove parking page (one time)
 
-## Step 3 — Production `.env` on server
+**File Manager → public_html**
 
-In `/home/grouevbi/repositories/offer1/`:
+Delete or rename:
 
-Copy `.env.example` → `.env` (or edit `.env` if it exists):
+- `parking-page.shtml`
+
+Your site uses `index.php` from the deploy.
+
+### 3. Edit `.env` on server
+
+**File Manager → Settings → Show Hidden Files**
+
+Open `/home/grouevbi/.env` (home folder, **not** inside public_html):
 
 ```env
 SITE_URL=https://groundwork-web.com
 SITE_EMAIL=hello@groundwork-web.com
 MAIL_TO=hello@groundwork-web.com
-CALENDLY_URL=
 ```
 
----
+### 4. SSL
 
-## Step 4 — Email (recommended)
+**SSL/TLS Status → Run AutoSSL** for `groundwork-web.com`
 
-**cPanel → Email Accounts** → create `hello@groundwork-web.com`
+### 5. Test
 
-Then form submissions to `MAIL_TO` will reach your inbox.
-
----
-
-## Step 5 — SSL
-
-**cPanel → SSL/TLS Status** → run **AutoSSL** for `groundwork-web.com`
-
-Site should load at **https://groundwork-web.com**
+Visit **https://groundwork-web.com** — founding partner landing page.
 
 ---
 
-## Step 6 — Verify
+## File layout after deploy
 
-- [ ] https://groundwork-web.com shows the founding partner landing page
-- [ ] Not the Namecheap/parking page
-- [ ] Submit contact form → check `repositories/offer1/storage/leads.sqlite` or email
-- [ ] Mobile looks correct
+| Path | Contents |
+|------|----------|
+| `/home/grouevbi/public_html/` | index.php, css, js, images (what visitors see) |
+| `/home/grouevbi/config/` | Site copy & offer settings |
+| `/home/grouevbi/lib/` | PHP code |
+| `/home/grouevbi/includes/` | Page sections |
+| `/home/grouevbi/storage/` | Lead form database |
+| `/home/grouevbi/.env` | Production settings |
+| `/home/grouevbi/repositories/offer1/` | Git repo (source — not served directly) |
 
 ---
 
-## Future updates (every change)
-
-**On your Mac:**
+## Future updates
 
 ```bash
+# Mac
 cd /Users/cyrus/Desktop/Business/mvp-website
-git add .
-git commit -m "Your change"
 git push origin main
 ```
 
-**In cPanel:** Git Version Control → offer1 → **Update from Remote** → **Deploy HEAD Commit**
-
-Live site at **https://groundwork-web.com** will match GitHub.
-
----
-
-## DNS (if domain not pointed yet)
-
-At your domain registrar, point to your hosting:
-
-| Type | Name | Value |
-|------|------|--------|
-| A | `@` | *(IP from cPanel → Server Information)* |
-| A or CNAME | `www` | same as above or `groundwork-web.com` |
-
-DNS can take up to 24–48 hours. SSL works after DNS resolves.
+cPanel → **Update from Remote** → **Deploy HEAD Commit**
