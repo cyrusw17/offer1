@@ -73,7 +73,42 @@ Open **http://127.0.0.1:8080**
 
 ---
 
-## Production deploy
+## cPanel deploy (Git → offer1)
+
+This repo includes **`.cpanel.yml`** for [cPanel Git deployment](https://docs.cpanel.net/knowledge-base/web-services/guide-to-git-deployment/).
+
+### Setup in cPanel
+
+1. **Git Version Control** → Clone `https://github.com/cyrusw17/offer1.git`
+2. Enable **Deployable** / pull deployment for the repo
+3. Click **Deploy HEAD Commit** (or push to trigger auto-deploy)
+
+### After first deploy
+
+1. **File Manager** → edit `~/.env` (home directory, not public_html):
+   ```
+   SITE_URL=https://yourdomain.com
+   SITE_EMAIL=hello@groundwork-web.com
+   MAIL_TO=hello@groundwork-web.com
+   ```
+2. Confirm `~/storage/` is writable (775)
+3. Test the contact form → check `~/storage/leads.sqlite` and your inbox
+
+### How files land
+
+| Path | Purpose |
+|------|---------|
+| `~/public_html/` | Web root — CSS, JS, `index.php` |
+| `~/config/` | Offer copy & settings |
+| `~/lib/` | PHP bootstrap + SQLite |
+| `~/includes/` | Page sections |
+| `~/storage/` | Lead database (gitignored) |
+
+If your site uses a subdomain folder, edit `DEPLOYPATH` in `.cpanel.yml` before deploying.
+
+---
+
+## Production deploy (manual)
 
 1. Register **groundwork-web.com**
 2. Point document root to `mvp-website/public/`

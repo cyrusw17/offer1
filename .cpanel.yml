@@ -1,0 +1,32 @@
+---
+# cPanel Git deployment — Groundwork Web founding landing
+# Docs: https://docs.cpanel.net/knowledge-base/web-services/guide-to-git-deployment/
+#
+# Layout after deploy:
+#   ~/public_html/     ← web root (index.php, css, js, images)
+#   ~/config/          ← site config (not web-accessible)
+#   ~/lib/             ← PHP bootstrap + lead storage
+#   ~/includes/        ← page sections
+#   ~/storage/         ← SQLite leads (writable)
+#   ~/.env             ← production env (create from .env.example)
+#
+# If your domain uses a subdomain folder, change DEPLOYPATH, e.g.:
+#   export DEPLOYPATH=$HOME/public_html/offer
+
+deployment:
+  tasks:
+    - export DEPLOYPATH=$HOME/public_html
+    - export APPROOT=$HOME
+    - /bin/mkdir -p $DEPLOYPATH $APPROOT/storage
+    - /bin/cp public/index.php $DEPLOYPATH/index.php
+    - /bin/cp public/robots.txt $DEPLOYPATH/robots.txt
+    - /bin/cp public/.htaccess $DEPLOYPATH/.htaccess
+    - /bin/cp -R public/css $DEPLOYPATH/css
+    - /bin/cp -R public/js $DEPLOYPATH/js
+    - /bin/cp -R public/images $DEPLOYPATH/images
+    - /bin/cp -R config $APPROOT/config
+    - /bin/cp -R lib $APPROOT/lib
+    - /bin/cp -R includes $APPROOT/includes
+    - /bin/cp -n .env.example $APPROOT/.env
+    - /bin/chmod 775 $APPROOT/storage
+    - /bin/chmod 644 $APPROOT/.env
