@@ -73,42 +73,31 @@ Open **http://127.0.0.1:8080**
 
 ---
 
-## cPanel deploy (Git → offer1)
+## cPanel deploy (groundwork-web.com → public_html)
 
-This repo includes **`.cpanel.yml`** for [cPanel Git deployment](https://docs.cpanel.net/knowledge-base/web-services/guide-to-git-deployment/).
+**Full guide:** `docs/deploy-groundwork-web.com.md`
 
-### Setup in cPanel
+This repo deploys to **`~/public_html/`** on cPanel (primary domain web root). Git source lives in **`~/repositories/offer1/`**.
 
-1. **Git Version Control** → Clone `https://github.com/cyrusw17/offer1.git`
-2. Enable **Deployable** / pull deployment for the repo
-3. Click **Deploy HEAD Commit** (or push to trigger auto-deploy)
+### Each release
 
-### After first deploy
+1. `git push origin main`
+2. cPanel → **Git Version Control** → offer1 → **Update from Remote**
+3. **Deploy HEAD Commit**
 
-1. **File Manager** → edit `~/.env` (home directory, not public_html):
-   ```
-   SITE_URL=https://groundwork-web.com
-   SITE_EMAIL=hello@groundwork-web.com
-   MAIL_TO=hello@groundwork-web.com
-   ```
-2. Confirm `~/storage/` is writable (775)
-3. Test the contact form → check `~/storage/leads.sqlite` and your inbox
+### Production `.env` (once)
 
-### How files land
+In `/home/grouevbi/.env`:
 
-| Path | Purpose |
-|------|---------|
-| `~/public_html/` | Web root — CSS, JS, `index.php` |
-| `~/config/` | Offer copy & settings |
-| `~/lib/` | PHP bootstrap + SQLite |
-| `~/includes/` | Page sections |
-| `~/storage/` | Lead database (gitignored) |
-
-If your site uses a subdomain folder, edit `DEPLOYPATH` in `.cpanel.yml` before deploying.
+```
+SITE_URL=https://groundwork-web.com
+SITE_EMAIL=hello@groundwork-web.com
+MAIL_TO=hello@groundwork-web.com
+```
 
 ---
 
-## Production deploy (manual)
+## Production deploy (non-cPanel)
 
 1. Register **groundwork-web.com**
 2. Point document root to `mvp-website/public/`
