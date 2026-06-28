@@ -1,5 +1,16 @@
 ---
 deployment:
   tasks:
-    - /bin/mkdir -p storage
-    - /bin/chmod 775 storage
+    - export DEPLOYPATH=$HOME/public_html/
+    - /bin/mkdir -p $HOME/storage
+    - /bin/cp public/index.php $DEPLOYPATH
+    - /bin/cp public/robots.txt $DEPLOYPATH
+    - /bin/cp public/.htaccess $DEPLOYPATH
+    - /bin/cp -R public/css $DEPLOYPATH
+    - /bin/cp -R public/js $DEPLOYPATH
+    - /bin/cp -R public/images $DEPLOYPATH
+    - /bin/cp -R config $HOME/config
+    - /bin/cp -R lib $HOME/lib
+    - /bin/cp -R includes $HOME/includes
+    - /bin/cp .env.example $HOME/.env
+    - /bin/chmod 775 $HOME/storage
