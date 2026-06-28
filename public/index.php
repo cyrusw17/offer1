@@ -21,11 +21,17 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
     $formOld = [
         'name' => trim($_POST['name'] ?? ''),
         'phone' => trim($_POST['phone'] ?? ''),
+        'email' => trim($_POST['email'] ?? ''),
         'business_name' => trim($_POST['business_name'] ?? ''),
         'location' => trim($_POST['location'] ?? ''),
         'industry' => trim($_POST['industry'] ?? ''),
+        'contact_method' => trim($_POST['contact_method'] ?? ''),
+        'contact_time' => trim($_POST['contact_time'] ?? ''),
         'message' => trim($_POST['message'] ?? ''),
     ];
+
+    $allowedMethods = array_keys(config('form_contact_methods'));
+    $allowedTimes = array_keys(config('form_contact_times'));
 
     if (! hash_equals($csrfToken, $_POST['_token'] ?? '')) {
         $formErrors['_form'] = 'Session expired. Please try again.';
@@ -45,6 +51,21 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
         if ($formOld['industry'] === '') {
             $formErrors['industry'] = 'Please select an industry.';
         }
+        if ($formOld['contact_method'] === '' || ! in_array($formOld['contact_method'], $allowedMethods, true)) {
+            $formErrors['contact_method'] = 'Please choose how we should contact you.';
+        }
+        if ($formOld['contact_time'] === '' || ! in_array($formOld['contact_time'], $allowedTimes, true)) {
+            $formErrors['contact_time'] = 'Please choose the best time to contact you.';
+        }
+        if ($formOld['contact_method'] === 'email') {
+            if ($formOld['email'] === '') {
+                $formErrors['email'] = 'Email is required when email is your preferred contact method.';
+            } elseif (! filter_var($formOld['email'], FILTER_VALIDATE_EMAIL)) {
+                $formErrors['email'] = 'Please enter a valid email address.';
+            }
+        } elseif ($formOld['email'] !== '' && ! filter_var($formOld['email'], FILTER_VALIDATE_EMAIL)) {
+            $formErrors['email'] = 'Please enter a valid email address.';
+        }
         if (trim($_POST['website'] ?? '') !== '') {
             $formErrors['_form'] = 'Unable to submit. Please try again.';
         }
@@ -54,28 +75,35 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
                 $store = new LeadStore(dirname(__DIR__) . '/storage/leads.sqlite');
                 $store->save($formOld + ['source' => 'founding-landing']);
 
+                $methodLabel = config('form_contact_methods')[$formOld['contact_method']] ?? $formOld['contact_method'];
+                $timeLabel = config('form_contact_times')[$formOld['contact_time']] ?? $formOld['contact_time'];
+
                 $logLine = sprintf(
-                    "[%s] %s | %s | %s | %s | %s\n",
+                    "[%s] %s | %s | %s | %s | %s | %s | %s\n",
                     gmdate('c'),
                     $formOld['name'],
                     $formOld['phone'],
                     $formOld['business_name'],
                     $formOld['location'],
-                    $formOld['industry']
+                    $formOld['industry'],
+                    $methodLabel,
+                    $timeLabel
                 );
                 file_put_contents(dirname(__DIR__) . '/storage/leads.log', $logLine, FILE_APPEND | LOCK_EX);
 
                 $mailTo = getenv('MAIL_TO') ?: config('email');
                 $subject = 'Founding client lead: ' . $formOld['business_name'];
                 $body = implode("\n", [
-                    'New founding client inquiry',
+                    'New founding client application',
                     '',
                     'Name: ' . $formOld['name'],
                     'Phone: ' . $formOld['phone'],
+                    'Email: ' . ($formOld['email'] ?: '(none)'),
                     'Business: ' . $formOld['business_name'],
                     'Location: ' . $formOld['location'],
                     'Industry: ' . $formOld['industry'],
-                    'Message: ' . ($formOld['message'] ?: '(none)'),
+                    'Preferred contact: ' . $methodLabel,
+                    'Best time: ' . $timeLabel,
                 ]);
                 @mail($mailTo, $subject, $body, 'From: ' . config('email'));
 

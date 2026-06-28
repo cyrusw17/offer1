@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <p class="pricing-note"><?= $offer['term_months'] ?>-month minimum partnership · testimonial required</p>
-                <a href="#book" class="btn btn-primary btn-block btn-lg">Book Your Free Strategy Call</a>
+                <a href="#apply" class="btn btn-primary btn-block btn-lg">Apply for a Founding Spot</a>
             </div>
         </div>
     </div>

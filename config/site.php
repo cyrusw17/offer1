@@ -37,7 +37,7 @@ return [
     ],
 
     'how_it_works' => [
-        ['step' => '01', 'title' => 'Book a call', 'body' => '30-minute strategy call. No pressure — we see if it\'s a fit.'],
+        ['step' => '01', 'title' => 'Apply', 'body' => 'Fill out a short form. Tell us how and when to reach you — no pressure.'],
         ['step' => '02', 'title' => 'Plan & design', 'body' => 'We map your pages, messaging, and design before a single line of code.'],
         ['step' => '03', 'title' => 'Build & launch', 'body' => 'Custom site goes live on your domain in 2–4 weeks.'],
         ['step' => '04', 'title' => 'We run it', 'body' => 'Hosting, updates, and maintenance every month — you stay focused on the shop.'],
@@ -73,7 +73,7 @@ return [
         ],
         [
             'q' => 'What isn\'t included?',
-            'a' => 'Major redesigns, unlimited revision rounds, e-commerce, custom apps, and paid ad management are outside the founding scope. We\'ll be upfront about anything extra on your call.',
+            'a' => 'Major redesigns, unlimited revision rounds, e-commerce, custom apps, and paid ad management are outside the founding scope. We\'ll be upfront about anything extra when we talk.',
         ],
         [
             'q' => 'Who owns the website?',
@@ -95,5 +95,18 @@ return [
         'General contractor',
         'Landscaping',
         'Other local service',
+    ],
+
+    'form_contact_methods' => [
+        'phone' => 'Phone call',
+        'text' => 'Text message',
+        'email' => 'Email',
+    ],
+
+    'form_contact_times' => [
+        'morning' => 'Morning (8am–12pm)',
+        'afternoon' => 'Afternoon (12pm–5pm)',
+        'evening' => 'Evening (5pm–8pm)',
+        'anytime' => 'Anytime works',
     ],
 ];

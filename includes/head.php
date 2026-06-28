@@ -66,4 +66,4 @@ $ogImage = $url . '/images/og-image.svg';
     </script>
 </head>
 <body class="has-mobile-cta">
-<a class="skip-link" href="#book">Skip to booking form</a>
+<a class="skip-link" href="#apply">Skip to application form</a>

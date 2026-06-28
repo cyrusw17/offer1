@@ -393,6 +393,17 @@ button, input, select, textarea { font: inherit; }
   box-shadow: 0 0 0 4px rgba(212,137,74,0.12);
 }
 .field-error { display: block; font-size: 0.8125rem; color: #dc2626; margin-top: 0.25rem; }
+.fieldset { border: 0; margin: 0 0 1rem; padding: 0; }
+.fieldset legend { display: block; font-size: 0.8125rem; font-weight: 600; margin-bottom: 0.5rem; padding: 0; }
+.radio-group { display: grid; gap: 0.5rem; }
+.radio-option {
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 0.7rem 0.85rem; border: 1px solid var(--border); border-radius: 10px;
+  cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s;
+}
+.radio-option:has(input:checked) { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(212,137,74,0.12); }
+.radio-option input { width: auto; margin: 0; accent-color: var(--accent); }
+.radio-option span { font-size: 0.9rem; font-weight: 500; }
 .hp-field { position: absolute; left: -9999px; opacity: 0; height: 0; width: 0; }
 .form-trust { text-align: center; font-size: 0.8125rem; color: var(--text-muted); margin: 0.75rem 0 0; }
 

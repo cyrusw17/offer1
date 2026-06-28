@@ -18,10 +18,10 @@
                 maintenance, and support. We handle the tech. You run the business.
             </p>
             <div class="hero-cta">
-                <a href="#book" class="btn btn-primary btn-lg">Book Your Free Strategy Call</a>
+                <a href="#apply" class="btn btn-primary btn-lg">Apply for a Founding Spot</a>
                 <a href="#included" class="btn btn-ghost btn-lg">See What's Included</a>
             </div>
-            <p class="hero-note">30 minutes · No obligation · Honest fit check</p>
+            <p class="hero-note">2-minute form · No obligation · Honest fit check</p>
         </div>
         <div class="hero-visual reveal">
             <div class="hero-visual-glow" aria-hidden="true"></div>

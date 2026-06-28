@@ -3,13 +3,13 @@
 
   var header = document.querySelector('.site-header');
   var mobileCta = document.querySelector('.mobile-cta');
-  var bookSection = document.querySelector('#book');
+  var applySection = document.querySelector('#apply');
 
   function onScroll() {
     var y = window.scrollY;
     if (header) header.classList.toggle('is-scrolled', y > 48);
-    if (mobileCta && bookSection) {
-      var rect = bookSection.getBoundingClientRect();
+    if (mobileCta && applySection) {
+      var rect = applySection.getBoundingClientRect();
       var show = y > 400 && rect.top > window.innerHeight;
       mobileCta.classList.toggle('is-visible', show);
       mobileCta.setAttribute('aria-hidden', show ? 'false' : 'true');
@@ -52,6 +52,19 @@
     panel.style.maxHeight = panel.scrollHeight + 'px';
   });
 
+  var applyForm = document.getElementById('apply-form');
+  if (applyForm) {
+    var emailInput = applyForm.querySelector('#email');
+    var emailLabel = applyForm.querySelector('label[for="email"]');
+    applyForm.querySelectorAll('input[name="contact_method"]').forEach(function (radio) {
+      radio.addEventListener('change', function () {
+        var needsEmail = radio.value === 'email' && radio.checked;
+        if (emailInput) emailInput.required = needsEmail;
+        if (emailLabel) emailLabel.textContent = needsEmail ? 'Email *' : 'Email';
+      });
+    });
+  }
+
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function initMotion() {
@@ -70,11 +83,12 @@
       document.documentElement.classList.add('js-anim');
       gsap.registerPlugin(ScrollTrigger);
       gsap.utils.toArray('.reveal').forEach(function (el) {
+        var inView = el.getBoundingClientRect().top < window.innerHeight * 0.92;
         gsap.fromTo(el,
           { opacity: 0, y: 20 },
           {
             opacity: 1, y: 0, duration: 0.6, ease: 'power2.out',
-            scrollTrigger: { trigger: el, start: 'top 90%' }
+            scrollTrigger: inView ? null : { trigger: el, start: 'top 90%' }
           }
         );
       });
