@@ -69,7 +69,7 @@ repositories/offer1/.env.example  →  repositories/offer1/.env
 Edit `.env`:
 
 ```
-SITE_URL=https://yourdomain.com
+SITE_URL=https://groundwork-web.com
 SITE_EMAIL=hello@groundwork-web.com
 MAIL_TO=hello@groundwork-web.com
 ```

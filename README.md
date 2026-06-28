@@ -87,7 +87,7 @@ This repo includes **`.cpanel.yml`** for [cPanel Git deployment](https://docs.cp
 
 1. **File Manager** → edit `~/.env` (home directory, not public_html):
    ```
-   SITE_URL=https://yourdomain.com
+   SITE_URL=https://groundwork-web.com
    SITE_EMAIL=hello@groundwork-web.com
    MAIL_TO=hello@groundwork-web.com
    ```
