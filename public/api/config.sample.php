@@ -11,7 +11,7 @@ define('GW_STATS_KEY', '');
 
 // Where /api/lead.php emails new start/audit submissions. Leads are always
 // stored in the DB (visible on the dashboard) even if this is empty.
-define('GW_LEAD_EMAIL', '');
+define('GW_LEAD_EMAIL', 'cyruswilburn@icloud.com');
 
 // Optional. Where the SQLite database lives. Default is one folder ABOVE the
 // web root (…/gw-data), which is correct for cPanel when the site is in public_html.

@@ -20,7 +20,10 @@ deployment:
     - /bin/cp -R public/. $DEPLOYPATH/
 
     # First deploy only: create api/config.php with a random dashboard key
-    - if [ ! -f $DEPLOYPATH/api/config.php ]; then KEY=$(/usr/bin/openssl rand -hex 24 2>/dev/null || /bin/date +%s%N | /usr/bin/sha256sum | /usr/bin/cut -c1-48); /usr/bin/printf '<?php\ndefine("GW_STATS_KEY", "%s");\ndefine("GW_LEAD_EMAIL", "hello@groundwork-web.com");\n' "$KEY" > $DEPLOYPATH/api/config.php; fi
+    - if [ ! -f $DEPLOYPATH/api/config.php ]; then KEY=$(/usr/bin/openssl rand -hex 24 2>/dev/null || /bin/date +%s%N | /usr/bin/sha256sum | /usr/bin/cut -c1-48); /usr/bin/printf '<?php\ndefine("GW_STATS_KEY", "%s");\ndefine("GW_LEAD_EMAIL", "cyruswilburn@icloud.com");\n' "$KEY" > $DEPLOYPATH/api/config.php; fi
+
+    # Keep lead destination current without touching the dashboard key
+    - /bin/sed -i 's/define("GW_LEAD_EMAIL".*/define("GW_LEAD_EMAIL", "cyruswilburn@icloud.com");/' $DEPLOYPATH/api/config.php
 
     # Analytics + leads database folder, above the web root
     - /bin/mkdir -p $HOME/gw-data

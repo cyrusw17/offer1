@@ -10,7 +10,7 @@ if (is_file(__DIR__ . '/config.php')) require __DIR__ . '/config.php';
 if (!defined('GW_DATA_DIR')) define('GW_DATA_DIR', dirname(__DIR__, 2) . '/gw-data');
 if (!defined('GW_RETENTION_DAYS')) define('GW_RETENTION_DAYS', 400);   // ~13 months
 if (!defined('GW_STATS_KEY')) define('GW_STATS_KEY', '');               // set in config.php to unlock /api/stats.php
-if (!defined('GW_LEAD_EMAIL')) define('GW_LEAD_EMAIL', '');             // where lead.php emails submissions
+if (!defined('GW_LEAD_EMAIL')) define('GW_LEAD_EMAIL', 'cyruswilburn@icloud.com'); // form notifications
 
 function gw_db(): PDO {
     static $db = null;
