@@ -1,0 +1,39 @@
+/* GroundWork — Theme A "Bay Door" design tokens */
+:root {
+  /* surfaces */
+  --void: #0C0D10;
+  --panel: #16181E;
+  --panel-2: #1D2027;
+  --spot: #F3F0EA;
+
+  /* text */
+  --bone: #E6E1D6;
+  --mute: #8B909A;
+  --ink: #14151A;
+  --ink-mute: #5C616B;
+
+  /* lines */
+  --steel: #3A3F48;
+  --steel-soft: #262A32;
+  --steel-text: #6B7280;   /* decorative numerals — passes 3:1 at large sizes */
+  --rail: #D9D4CB;
+
+  /* accent — CTAs only */
+  --signal: #E5A00D;
+  --signal-press: #B87D08;
+  --signal-ink: #1A1200;
+
+  /* type */
+  --font-display: "Oswald", "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-body: "Source Sans 3", "Source Sans Pro", system-ui, sans-serif;
+
+  /* layout */
+  --max: 1180px;
+  --gutter: clamp(20px, 5vw, 64px);
+  --radius: 6px;
+  --radius-sm: 4px;
+  --bar-h: 44px;
+
+  /* motion */
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}

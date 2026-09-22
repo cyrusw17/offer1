@@ -1,24 +1,28 @@
 ---
-# groundwork-web.com — deploy target: ~/public_html/
-# Git repo: ~/repositories/offer1/ (source only)
-# Live site: https://groundwork-web.com
+# groundwork-web.com — cPanel deploy
+# Git source on server: ~/repositories/offer1/   Live web root: ~/public_html/
+# Everything under public/ is copied to public_html/. Analytics data lives in
+# ~/gw-data/ (above the web root, created automatically by api/_lib.php).
 
 deployment:
   tasks:
-    - export DEPLOYPATH=$HOME/public_html/
-    - export APPROOT=$HOME
-    - /bin/mkdir -p $APPROOT/storage
-    - /bin/cp -f public/index.php $DEPLOYPATH
-    - /bin/cp -f public/robots.txt $DEPLOYPATH
-    - /bin/cp -f public/sitemap.xml $DEPLOYPATH
-    - /bin/cp -f public/.htaccess $DEPLOYPATH
-    - /bin/cp -R public/css $DEPLOYPATH
-    - /bin/cp -R public/js $DEPLOYPATH
-    - /bin/cp -R public/images $DEPLOYPATH
-    - /bin/rm -rf $APPROOT/config $APPROOT/lib $APPROOT/includes
-    - /bin/cp -R config $APPROOT/
-    - /bin/cp -R lib $APPROOT/
-    - /bin/cp -R includes $APPROOT/
-    - if [ ! -f $APPROOT/.env ]; then /bin/cp .env.example $APPROOT/.env; fi
-    - /bin/rm -f $DEPLOYPATH/parking-page.shtml
-    - /bin/chmod 775 $APPROOT/storage
+    - export DEPLOYPATH=$HOME/public_html
+    - /bin/mkdir -p $DEPLOYPATH
+
+    # Remove the old Launch Partner app (its files would otherwise shadow the new site)
+    - /bin/rm -f  $DEPLOYPATH/index.php $DEPLOYPATH/parking-page.shtml
+    - /bin/rm -rf $DEPLOYPATH/css $DEPLOYPATH/js $DEPLOYPATH/images
+    - /bin/rm -rf $HOME/config $HOME/lib $HOME/includes
+
+    # Sync the site. Whole folders are replaced so deleted files don't linger;
+    # api/ is overlaid (not replaced) so api/config.php on the server survives.
+    - /bin/rm -rf $DEPLOYPATH/assets $DEPLOYPATH/kit $DEPLOYPATH/demos $DEPLOYPATH/guides $DEPLOYPATH/pricing $DEPLOYPATH/audit $DEPLOYPATH/start $DEPLOYPATH/thanks $DEPLOYPATH/privacy
+    - /bin/cp -R public/. $DEPLOYPATH/
+
+    # First deploy only: create api/config.php with a random dashboard key
+    - if [ ! -f $DEPLOYPATH/api/config.php ]; then KEY=$(/usr/bin/openssl rand -hex 24 2>/dev/null || /bin/date +%s%N | /usr/bin/sha256sum | /usr/bin/cut -c1-48); /usr/bin/printf '<?php\ndefine("GW_STATS_KEY", "%s");\ndefine("GW_LEAD_EMAIL", "hello@groundwork-web.com");\n' "$KEY" > $DEPLOYPATH/api/config.php; fi
+
+    # Analytics + leads database folder, above the web root
+    - /bin/mkdir -p $HOME/gw-data
+    - /bin/chmod 750 $HOME/gw-data
+    - /bin/chmod 600 $DEPLOYPATH/api/config.php

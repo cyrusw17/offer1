@@ -1,162 +1,33 @@
-# MVP Website — Founding Client Landing Page
+# offer1 — groundwork-web.com production deploy
 
-> **One goal:** Fill the first 3 founding client spots.  
-> **Stack:** PHP 8.3+, SQLite (MySQL-ready), HTML/CSS/JS, GSAP, Lenis, Lucide  
-> **Evolves to:** Laravel (`../website/app/`)
+This repo is the **cPanel deploy mirror** for [groundwork-web.com](https://groundwork-web.com). Everything under `public/` becomes `~/public_html/` on the server.
 
----
-
-## What this is
-
-A single-page, conversion-focused landing page for the **Founding Client Program**:
-
-- **3 spots** — no setup fee (normally $2,500+)
-- **$199/month** — hosting, maintenance, updates included
-- **12-month** minimum partnership
-- Testimonial + case study required
-
-Not a full agency site. Not a blog. One page, one CTA: **book a strategy call**.
-
----
-
-## Project structure
-
-```
-mvp-website/
-├── config/site.php          # All copy, offer terms, FAQs
-├── docs/01-research.md      # Conversion research principles
-├── includes/
-│   ├── head.php             # SEO, schema, assets
-│   ├── header.php
-│   ├── footer.php
-│   └── sections/            # One file per page section
-├── lib/
-│   ├── bootstrap.php        # Env + helpers
-│   └── LeadStore.php        # SQLite lead storage
-├── public/                  # Web root (point domain here)
-│   ├── index.php
-│   ├── css/app.css
-│   ├── js/app.js
-│   └── robots.txt
-├── storage/                 # leads.sqlite + leads.log (gitignored)
-├── .env.example
-└── README.md
-```
-
----
-
-## Local setup
+Source of truth is the [GroundWork-Web](https://github.com/cyrusw17/GroundWork-Web) repo (`site/` folder). Edit there, then sync here:
 
 ```bash
-cd mvp-website
-cp .env.example .env
-# Edit .env — set SITE_URL=https://groundwork-web.test for local
+rsync -a --delete --exclude .DS_Store --exclude 'api/config.php' \
+  /Users/cyrus/Desktop/remod/site/  /path/to/offer1/public/
+cd /path/to/offer1 && git add -A && git commit -m "Deploy: <what changed>" && git push origin main
 ```
 
-### Laravel Herd (recommended)
+Then in cPanel → **Git Version Control → offer1**: **Update from Remote**, wait, **Deploy HEAD Commit**.
 
-```bash
-cd public
-herd link groundwork-web --secure --update-env
-```
+## What's here
 
-Open **https://groundwork-web.test**
-
-### PHP built-in server
-
-```bash
-cd public
-php -S 127.0.0.1:8080
-```
-
-Open **http://127.0.0.1:8080**
-
----
-
-## Git repos
-
-| Repo | Purpose |
+| Path | Purpose |
 |------|---------|
-| [myWorkflow](https://github.com/cyrusw17/myWorkflow) | Full business workspace (this folder's parent) |
-| [offer1](https://github.com/cyrusw17/offer1) | **cPanel production deploy** — push here to go live |
+| `public/` | Static HTML/CSS/JS site + `api/` (PHP: analytics collector, lead intake, dashboard) |
+| `public/.htaccess` | HTTPS + no-www redirect, security headers, compression, caching |
+| `.cpanel.yml` | Deploy tasks: clears old app, copies `public/`, creates `api/config.php` once, makes `~/gw-data/` |
 
-### Deploy to production (offer1)
-
-After changes in `mvp-website/`:
-
-```bash
-# From a separate offer1 clone, or re-init once:
-cd /path/to/offer1-clone
-# Copy/rsync from mvp-website, or cherry-pick from myWorkflow
-git add . && git commit -m "Deploy update" && git push origin main
-```
-
-Then cPanel: **Update from Remote → Deploy HEAD Commit**
-
-The parent **myWorkflow** repo is the source of truth; **offer1** is the deploy mirror for cPanel.
-
----
-
-**Full guide:** `docs/deploy-groundwork-web.com.md`
-
-This repo deploys to **`~/public_html/`** on cPanel (primary domain web root). Git source lives in **`~/repositories/offer1/`**.
-
-### Each release
-
-1. `git push origin main`
-2. cPanel → **Git Version Control** → offer1 → **Update from Remote**
-3. **Deploy HEAD Commit**
-
-### Production `.env` (once)
-
-In `/home/grouevbi/.env`:
+## Server layout after deploy
 
 ```
-SITE_URL=https://groundwork-web.com
-SITE_EMAIL=hello@groundwork-web.com
-MAIL_TO=hello@groundwork-web.com
+/home/grouevbi/
+├── public_html/            ← the site (from public/)
+│   └── api/config.php      ← created on first deploy, never overwritten (dashboard key, lead email)
+├── gw-data/                ← analytics.sqlite + secret.txt (auto-created, outside web root)
+└── repositories/offer1/    ← git source (cPanel manages)
 ```
 
----
-
-## Production deploy (non-cPanel)
-
-1. Register **groundwork-web.com**
-2. Point document root to `mvp-website/public/`
-3. Copy `.env.example` → `.env` on server
-4. Set `SITE_URL=https://groundwork-web.com`
-5. Set `MAIL_TO=hello@groundwork-web.com`
-6. Ensure `storage/` is writable (755)
-7. Configure SMTP or use host mail for lead notifications
-8. Test form submission → check `storage/leads.sqlite` + inbox
-
----
-
-## Checklist before ads
-
-- [ ] Domain live with HTTPS
-- [ ] `hello@groundwork-web.com` working
-- [ ] Form test → email + SQLite row
-- [ ] Update `spots_remaining` in `config/site.php` as spots fill
-- [ ] Add Calendly URL to `.env` when ready (`CALENDLY_URL=`)
-- [ ] Mobile test on real phone
-
----
-
-## Updating spots remaining
-
-Edit `config/site.php`:
-
-```php
-'spots_remaining' => 2,  // decrement as you close clients
-```
-
----
-
-## Related docs
-
-| Doc | Purpose |
-|-----|---------|
-| `../first-steps.md` | Full launch + outreach playbook |
-| `docs/01-research.md` | Why each section exists |
-| `../website/app/` | Full Laravel site (post-MVP) |
+Full checklist: `docs/cpanel-deploy.md`.
