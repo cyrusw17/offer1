@@ -48,7 +48,10 @@ section{padding-block:clamp(60px,8vw,110px)}
 .gw-bar .gw-actions{display:flex;gap:8px}
 .gw-bar a.gw-cta{padding:6px 12px;border-radius:4px;font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:12px;font-weight:600;border:1px solid #3A3F48;color:#E6E1D6}
 .gw-bar a.gw-cta.p{background:#E5A00D;color:#1A1200;border-color:#E5A00D}
-@media (max-width:700px){.gw-bar span{display:none}}
+@media (max-width:700px){
+  .gw-bar span{display:none}
+  .gw-bar a.gw-cta{text-transform:none;letter-spacing:0;font-family:"Source Sans 3",system-ui,sans-serif;font-size:14px;padding:6px 10px}
+}
 
 /* nav */
 .k-nav{position:sticky;top:44px;z-index:40;background:color-mix(in srgb,var(--k-bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--k-line)}
@@ -59,7 +62,12 @@ section{padding-block:clamp(60px,8vw,110px)}
 .k-links a:hover{color:var(--k-text)}
 .k-nav .k-actions{display:flex;gap:10px;align-items:center}
 .k-nav .k-btn{padding:11px 16px;font-size:13px}
-@media (max-width:860px){.k-links,.k-nav .k-btn-ghost{display:none}}
+@media (max-width:860px){
+  .k-links,.k-nav .k-btn-ghost{display:none}
+  .k-btn{text-transform:none;letter-spacing:0;font-family:var(--k-body);font-size:16px;font-weight:600;padding:10px 16px;min-height:44px;width:auto;max-width:100%}
+  .k-hero .k-ctas,.k-actions{gap:12px}
+  .k-sticky .k-btn{font-size:15px;width:100%}
+}
 
 /* hero */
 .k-hero{position:relative;overflow:hidden;border-bottom:1px solid var(--k-line)}
@@ -148,8 +156,8 @@ section{padding-block:clamp(60px,8vw,110px)}
 .k-embed .slot[aria-checked=true]{background:var(--k-accent);color:var(--k-accent-ink);border-color:var(--k-accent);font-weight:600}
 .k-embed [role=status]:not(:empty){font-size:14px;color:var(--k-text);text-align:center;padding:8px;border:1px solid var(--k-line);border-radius:6px}
 .k-embed .note{font-size:12px;color:var(--k-mute);text-align:center}
-.k-areas{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
-.k-areas span{border:1px solid var(--k-line);border-radius:999px;padding:6px 12px;font-size:14px;color:var(--k-mute)}
+.k-areas{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;padding:0;list-style:none}
+.k-areas li,.k-areas span{border:1px solid var(--k-line);border-radius:999px;padding:6px 12px;font-size:14px;color:var(--k-mute);list-style:none}
 
 /* faq */
 .k-faq details{border-top:1px solid var(--k-line)}

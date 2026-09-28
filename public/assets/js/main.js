@@ -18,13 +18,46 @@
     const links = nav.querySelector(".nav-links");
     if (links && !links.id) links.id = "primary-nav";
     if (links) toggle.setAttribute("aria-controls", links.id);
-    const setOpen = (open) => { nav.classList.toggle("open", open); toggle.setAttribute("aria-expanded", String(open)); };
+    const setOpen = (open) => {
+      nav.classList.toggle("open", open);
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.textContent = open ? "Close" : "Menu";
+      if (open && links) {
+        const first = links.querySelector("a");
+        if (first) first.focus();
+      }
+    };
     toggle.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
     // Escape closes the menu and returns focus to the toggle
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && nav.classList.contains("open")) { setOpen(false); toggle.focus(); }
     });
   }
+
+  // ---- Light / dark. Dark is the start. A saved choice wins; otherwise follow the device.
+  const themeBtn = document.querySelector("[data-theme-toggle]");
+  const systemTheme = () => matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  const activeTheme = () => document.documentElement.dataset.theme || systemTheme();
+  const paintTheme = (mode, persist) => {
+    document.documentElement.dataset.theme = mode;
+    document.documentElement.style.colorScheme = mode;
+    if (persist) localStorage.setItem("gw_theme", mode);
+    if (themeBtn) {
+      const next = mode === "dark" ? "light" : "dark";
+      themeBtn.textContent = next === "light" ? "Light" : "Dark";
+      themeBtn.setAttribute("aria-pressed", mode === "light" ? "true" : "false");
+      themeBtn.setAttribute("aria-label", "Switch to " + next + " mode");
+    }
+    const meta = document.querySelector('meta[name="theme-color"]:not([media])');
+    if (meta) meta.setAttribute("content", mode === "light" ? "#F7F4EE" : "#0C0D10");
+  };
+  paintTheme(activeTheme(), false);
+  if (themeBtn) {
+    themeBtn.addEventListener("click", () => paintTheme(activeTheme() === "dark" ? "light" : "dark", true));
+  }
+  matchMedia("(prefers-color-scheme: light)").addEventListener("change", () => {
+    if (!localStorage.getItem("gw_theme")) paintTheme(systemTheme(), false);
+  });
 
   // ---- Current page marker
   document.querySelectorAll(".nav-links a").forEach(a => {
@@ -97,6 +130,27 @@
   document.querySelectorAll("form[data-gw-form]").forEach(form => {
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
+      form.querySelectorAll(".field-error").forEach(n => n.remove());
+      form.querySelectorAll("[aria-invalid]").forEach(el => el.removeAttribute("aria-invalid"));
+      const fields = [...form.querySelectorAll("input, textarea, select")].filter(el => el.willValidate && !el.hidden && el.type !== "hidden");
+      const bad = fields.filter(el => !el.checkValidity());
+      if (bad.length) {
+        bad.forEach(el => {
+          el.setAttribute("aria-invalid", "true");
+          const msg = document.createElement("p");
+          msg.className = "field-error";
+          msg.id = (el.name || "field") + "-error";
+          el.setAttribute("aria-describedby", msg.id);
+          msg.textContent = el.validity.typeMismatch && el.type === "email"
+            ? "Use an email like name@shop.com."
+            : "Add this so we know how to reach you.";
+          const label = el.closest("label");
+          if (label) label.insertAdjacentElement("afterend", msg);
+          else el.after(msg);
+        });
+        bad[0].focus();
+        return;
+      }
       const data = Object.fromEntries(new FormData(form).entries());
       data.attribution = JSON.stringify(window.gwAttr || {});
       data.page = location.pathname;
@@ -120,21 +174,24 @@
         } catch (_) { delivered = false; }
       }
       if (!delivered) {
-        // Fallback: pre-composed email so nothing is lost before a form service exists.
         const body = Object.entries(data).map(([k, v]) => `${k}: ${v}`).join("\n");
         const mail = `mailto:${GW.email}?subject=${encodeURIComponent("[GroundWork] " + (form.dataset.gwForm))}&body=${encodeURIComponent(body)}`;
-        // Only open mail client if we're not about to redirect to Stripe
-        if (form.dataset.gwForm !== "start") window.open(mail, "_blank");
+        if (form.dataset.gwForm === "start") {
+          window.open(mail, "_blank");
+          say("We could not send your details. Email us from the window that opened, or try again.");
+          if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label || "Continue to checkout"; btn.removeAttribute("aria-busy"); }
+          return;
+        }
+        window.open(mail, "_blank");
       }
 
-      // Buy-now: hand off to Stripe if configured
+      // Buy-now: only after the lead actually arrived
       if (form.dataset.gwForm === "start") {
         const plan = data.plan === "host" ? "host" : "grow";
         const link = GW.stripe && (GW.stripe[plan] || GW.stripe.build);
         if (link) {
           const u = new URL(link);
           if (data.email) u.searchParams.set("prefilled_email", data.email);
-          // Shows on the Stripe payment as "shop-name--grow" so you know which plan they chose
           const ref = (data.shop || "shop").replace(/[^a-z0-9-]/gi, "-").replace(/-+/g, "-").slice(0, 60) + "--" + plan;
           u.searchParams.set("client_reference_id", ref);
           say("Taking you to secure checkout.");

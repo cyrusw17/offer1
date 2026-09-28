@@ -54,7 +54,7 @@ $db->prepare('INSERT INTO leads (' . implode(',', $cols) . ') VALUES (' . implod
 
 // Email it to you (cPanel's PHP mail() works out of the box for the site's own domain)
 if (defined('GW_LEAD_EMAIL') && GW_LEAD_EMAIL !== '') {
-    $subject = sprintf('[GroundWork] %s — %s%s', $form === 'start' ? 'NEW BUILD ($399)' : 'Audit request',
+    $subject = sprintf('[GroundWork] %s — %s%s', $form === 'start' ? 'NEW BUILD ($99 today)' : 'Audit request',
         $lead['shop'] ?: $lead['name'], $lead['plan'] ? ' · ' . strtoupper($lead['plan']) : '');
     $body = '';
     foreach ($lead as $k => $v) { if ($k !== 'ts' && $v !== '') $body .= str_pad($k, 12) . ': ' . $v . "\n"; }

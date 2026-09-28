@@ -44,5 +44,5 @@ Options -Indexes
     Require all denied
 </FilesMatch>
 
-# Friendly 404 → home
-ErrorDocument 404 /
+# Friendly 404
+ErrorDocument 404 /404.html

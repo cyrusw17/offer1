@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Detailing Website With Prices and Booking | GroundWork-Web</title>
+<meta name="description" content="A detailing website with prices on the page and booking built in. $99 today, $300 when you approve, then Host $99/mo or Grow $199/mo. Deer Park, Texas. Clients anywhere in the US.">
+<meta name="theme-color" content="#0C0D10">
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem("gw_theme");
+    var light = window.matchMedia("(prefers-color-scheme: light)").matches;
+    var mode = saved === "light" || saved === "dark" ? saved : (light ? "light" : "dark");
+    document.documentElement.setAttribute("data-theme", mode);
+    document.documentElement.style.colorScheme = mode;
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", mode === "light" ? "#F7F4EE" : "#0C0D10");
+    document.addEventListener("DOMContentLoaded", function () {
+      var btn = document.querySelector("[data-theme-toggle]");
+      if (!btn) return;
+      var next = mode === "dark" ? "light" : "dark";
+      btn.textContent = next === "light" ? "Light" : "Dark";
+      btn.setAttribute("aria-pressed", mode === "light" ? "true" : "false");
+      btn.setAttribute("aria-label", "Switch to " + next + " mode");
+    });
+  } catch (e) {}
+})();
+</script>
+
+<link rel="canonical" href="https://groundwork-web.com/offer/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="GroundWork-Web">
+<meta property="og:url" content="https://groundwork-web.com/offer/">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="A Detailing Website With Prices and Booking | GroundWork-Web">
+<meta property="og:description" content="A detailing website with prices on the page and booking built in. $99 today, $300 when you approve, then $99 or $199 a month.">
+<meta property="og:image" content="https://groundwork-web.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A Detailing Website With Prices and Booking | GroundWork-Web">
+<meta name="twitter:description" content="A detailing website with prices on the page and booking built in. $99 today, $300 when you approve, then $99 or $199 a month.">
+<meta name="twitter:image" content="https://groundwork-web.com/assets/og.png">
+<link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/tokens.css">
+<link rel="stylesheet" href="/assets/css/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[
+{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"GroundWork-Web","item":"https://groundwork-web.com/"},{"@type":"ListItem","position":2,"name":"Offer","item":"https://groundwork-web.com/offer/"}]},
+{"@type":"ProfessionalService","@id":"https://groundwork-web.com/#business","name":"GroundWork-Web","url":"https://groundwork-web.com/","email":"groundworkweb@proton.me","priceRange":"$99 today, $399 build, then $99–$199 per month","address":{"@type":"PostalAddress","addressLocality":"Deer Park","addressRegion":"TX","addressCountry":"US"},"areaServed":{"@type":"Country","name":"United States"}},
+{"@type":"Service","name":"Auto detailing website","provider":{"@id":"https://groundwork-web.com/#business"},"areaServed":{"@type":"Country","name":"United States"},"url":"https://groundwork-web.com/offer/","description":"A detailing website with prices on the page and the shop's current booking tool embedded. Private preview before it goes live.","offers":[
+{"@type":"Offer","name":"Build","price":"399","priceCurrency":"USD","url":"https://groundwork-web.com/start/","description":"$99 due today, $300 when you approve the preview."},
+{"@type":"Offer","name":"Host","price":"99","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"99","priceCurrency":"USD","billingDuration":"P1M"}},
+{"@type":"Offer","name":"Grow","price":"199","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"199","priceCurrency":"USD","billingDuration":"P1M"}}
+]}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="wordmark" href="/" translate="no"><i aria-hidden="true"></i>GroundWork-Web</a>
+    <nav class="nav-links" id="primary-nav" aria-label="Primary">
+      <a href="/demos/">Demos</a><a href="/pricing/">Pricing</a><a href="/audit/">Free audit</a><a href="/start/">Start now</a>
+      <a class="nav-book" href="/audit/">Book the audit</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="link-arrow" href="/audit/">Book the audit <span aria-hidden="true">→</span></a>
+      <a class="btn btn-primary" href="/start/">Start now</a>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">Light</button>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow">The offer</div>
+    <h1>A detailing website with prices and booking.</h1>
+    <p class="lede" style="margin-top:22px">A site with your prices and online booking. Live in about a week.</p>
+    <dl class="deal">
+      <div><dt>$99</dt><dd>today, to start</dd></div>
+      <div><dt>$300</dt><dd>when you approve it</dd></div>
+      <div><dt>$99 <span>or</span> $199</dt><dd>a month, once it is live</dd></div>
+    </dl>
+    <p class="guarantee"><b>No risk.</b> You see the site before the $300. If you don't want it, the $99 comes back.</p>
+    <div class="choices">
+      <a class="choice choice-buy" href="/start/">
+        <span class="choice-k">Buy it now</span>
+        <span class="choice-t">Start now</span>
+        <span class="choice-d">$99 today. We start this week.</span>
+      </a>
+      <a class="choice choice-call" href="/audit/">
+        <span class="choice-k">Or book a call</span>
+        <span class="choice-t">Book the audit</span>
+        <span class="choice-d">Free 15 minutes. No pitch.</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="pain band">
+  <div class="wrap">
+    <h2 class="eyebrow">The problem</h2>
+    <ul class="pain-list">
+      <li>
+        <h3>The job dies in a DM</h3>
+        <p>They ask the price at 9pm. You answer in the morning. They already booked someone else.</p>
+      </li>
+      <li>
+        <h3>No place to say yes</h3>
+        <p>A Facebook page shows the work. It does not show a package and a time they can take.</p>
+      </li>
+      <li>
+        <h3>Google never finds you</h3>
+        <p>People search detailing near them. A profile with no site, or a site with no prices, does not get the click.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">What you get</div>
+    <h2>The site, the booking, and someone to keep it up.</h2>
+    <ol class="path-list">
+      <li><b>01</b><span>A detailing site with your packages and prices on the page, plus a gallery. You approve a private preview before it goes live.</span></li>
+      <li><b>02</b><span>Your current booking tool embedded. Square, Booksy, Google, Urable, or whatever you already use. Customers pick a package and a time.</span></li>
+      <li><b>03</b><span>Host keeps hosting, SSL, and the booking embed working. Grow adds two or three small updates a month, plus a Google Business Profile check-in.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band-light" id="price">
+  <div class="wrap">
+    <div class="eyebrow">Price</div>
+    <h2>Founding rate. It stays locked.</h2>
+    <div class="tiers">
+      <article class="tier">
+        <div class="name">Build</div>
+        <div class="price">$99 <small>today</small></div>
+        <div class="who">$300 when you approve the preview. $399 total. Then Host or Grow.</div>
+      </article>
+      <article class="tier">
+        <div class="name">Host</div>
+        <div class="price">$99 <small>/mo</small></div>
+        <div class="who">Hosting, SSL, uptime monitoring, booking embed kept working, and fixes. Billing starts the month you go live.</div>
+      </article>
+      <article class="tier default">
+        <div class="name">Grow</div>
+        <div class="price">$199 <small>/mo</small></div>
+        <div class="who">Everything in Host, plus 2–3 updates a month, a Google Business Profile and SEO check-in, and priority support.</div>
+      </article>
+    </div>
+    <p class="fine" style="margin-top:18px">Cancel with 30 days notice. The domain is registered in your name when you approve. <a href="/before-you-pay/">See it before the monthly starts</a>.</p>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap">
+    <div class="eyebrow">Before you pay</div>
+    <h2>What is already true</h2>
+    <ul class="trust-list">
+      <li>
+        <h3>Deer Park, not a call center</h3>
+        <p>We work from Deer Park, Texas. Your shop can be there or in any other state.</p>
+      </li>
+      <li>
+        <h3>You own the domain</h3>
+        <p>We register it in your name when you approve the site. If you cancel, we hand over the files after the final invoice.</p>
+      </li>
+      <li>
+        <h3>No risk until you approve</h3>
+        <p>You see a private preview and get one revision. If you don't want the site, we refund the $99. The $300 is charged only when you approve it live.</p>
+      </li>
+      <li>
+        <h3>Stripe holds the card</h3>
+        <p>$99 at checkout today. $300 when you approve the preview. The monthly plan starts the month the site goes live.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div class="eyebrow">Next step</div>
+    <h2>Two ways in.</h2>
+    <p class="guarantee"><b>No risk.</b> You see the site before the $300. If you don't want it, the $99 comes back.</p>
+    <div class="choices">
+      <a class="choice choice-buy" href="/start/">
+        <span class="choice-k">Buy it now</span>
+        <span class="choice-t">Start now</span>
+        <span class="choice-d">$99 today. We start this week.</span>
+      </a>
+      <a class="choice choice-call" href="/audit/">
+        <span class="choice-k">Or book a call</span>
+        <span class="choice-t">Book the audit</span>
+        <span class="choice-d">Free 15 minutes. No pitch.</span>
+      </a>
+    </div>
+    <p class="fine" style="margin-top:18px"><a href="/pricing/">Full pricing and the comparison</a></p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© <span data-year></span> GroundWork‑Web · Deer Park, TX</div>
+    <div><a data-gw-email href="#">groundworkweb@proton.me</a></div>
+    <nav aria-label="Footer"><a href="/demos/">Demos</a> · <a href="/pricing/">Pricing</a> · <a href="/guides/get-found-on-google/">Get found</a> · <a href="/audit/">Audit</a> · <a href="/start/">Start</a> · <a href="/offer/" aria-current="page">Offer</a> · <a href="/privacy/">Privacy</a></nav>
+  </div>
+  <p class="areas wrap">Based in Deer Park, Texas. Auto detailing websites for mobile detailers and shops anywhere in the US.</p>
+</footer>
+
+<script src="/assets/js/config.js"></script>
+<script src="/assets/js/main.js"></script>
+<script src="/assets/js/analytics.js" defer></script>
+</body>
+</html>

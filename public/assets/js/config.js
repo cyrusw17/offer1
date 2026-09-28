@@ -5,7 +5,7 @@
 */
 window.GW = {
   business: "GroundWork-Web",
-  email: "hello@groundwork-web.com",         // replace with your real inbox
+  email: "groundworkweb@proton.me",
   phone: "",                                  // optional: "(281) 555-0100"
 
   // Booking: Calendly event URL or Google Appointment Schedule URL
@@ -13,11 +13,12 @@ window.GW = {
   calendlyUrl: "https://calendly.com/cyruswilburn2005/30min",
 
   // Stripe Payment Links (Dashboard → Payment Links).
-  // `build` is the $399 Website Build charged today; the retainer is set up at
-  // go-live. If you later make plan-specific links (Build + Grow, Build + Host),
-  // fill `grow` / `host` and they take priority over `build`.
+  // `build` charges the $99 due today. Collect the $300 remainder when they
+  // approve the preview. Host or Grow starts the month the site goes live.
+  // If you later make plan-specific links, fill `grow` / `host` and they take
+  // priority over `build`.
   stripe: {
-    build: "https://buy.stripe.com/00w9AV85m2lm479c2IfUQ01",
+    build: "https://buy.stripe.com/fZufZj1GYbVW4794AgfUQ02",
     grow: "",
     host: ""
   },
@@ -27,5 +28,5 @@ window.GW = {
   // Swap for Formspree/Getform if you prefer: "https://formspree.io/f/xxxx"
   formEndpoint: "/api/lead.php",
 
-  pricing: { build: 399, host: 99, grow: 199 }
+  pricing: { build: 399, dueToday: 99, onApproval: 300, host: 99, grow: 199 }
 };

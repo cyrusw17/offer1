@@ -3,42 +3,65 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Detailing Website Cost: $399 Build + $99/mo | GroundWork</title>
-<meta name="description" content="What a car detailing website costs with GroundWork: $399 founding build, then Host $99/mo or Grow $199/mo. Booking included, no contracts, Texas only.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<title>What a Detailing Website Costs | GroundWork-Web</title>
+<meta name="description" content="What a detailing website costs: $99 today, $300 when you approve, $399 total. Then $99 a month to keep it up, or $199 if we also update it. Deer Park, Texas.">
 <meta name="theme-color" content="#0C0D10">
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem("gw_theme");
+    var light = window.matchMedia("(prefers-color-scheme: light)").matches;
+    var mode = saved === "light" || saved === "dark" ? saved : (light ? "light" : "dark");
+    document.documentElement.setAttribute("data-theme", mode);
+    document.documentElement.style.colorScheme = mode;
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", mode === "light" ? "#F7F4EE" : "#0C0D10");
+    document.addEventListener("DOMContentLoaded", function () {
+      var btn = document.querySelector("[data-theme-toggle]");
+      if (!btn) return;
+      var next = mode === "dark" ? "light" : "dark";
+      btn.textContent = next === "light" ? "Light" : "Dark";
+      btn.setAttribute("aria-pressed", mode === "light" ? "true" : "false");
+      btn.setAttribute("aria-label", "Switch to " + next + " mode");
+    });
+  } catch (e) {}
+})();
+</script>
+
 <!-- seo -->
 <link rel="canonical" href="https://groundwork-web.com/pricing/">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="GroundWork-Web">
 <meta property="og:url" content="https://groundwork-web.com/pricing/">
-<meta property="og:title" content="Detailing Website Cost: $399 Build + $99/mo | GroundWork">
-<meta property="og:description" content="What a car detailing website costs with GroundWork: $399 founding build, then Host $99/mo or Grow $199/mo. Booking included, no contracts, Texas only.">
+<meta property="og:title" content="What a Detailing Website Costs | GroundWork-Web">
+<meta property="og:description" content="What a detailing website costs: $99 today, $300 when you approve, $399 total. Then $99 or $199 a month.">
 <meta property="og:image" content="https://groundwork-web.com/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="GroundWork-Web — websites that get detailers booked">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Detailing Website Cost: $399 Build + $99/mo | GroundWork">
-<meta name="twitter:description" content="What a car detailing website costs with GroundWork: $399 founding build, then Host $99/mo or Grow $199/mo. Booking included, no contracts, Texas only.">
+<meta name="twitter:title" content="What a Detailing Website Costs | GroundWork-Web">
+<meta name="twitter:description" content="What a detailing website costs: $99 today, $300 when you approve, $399 total. Then $99 or $199 a month.">
 <meta name="twitter:image" content="https://groundwork-web.com/assets/og.png">
 <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"GroundWork-Web","item":"https://groundwork-web.com/"},{"@type":"ListItem","position":2,"name":"Pricing","item":"https://groundwork-web.com/pricing/"}]}</script>
 <!-- /seo -->
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
-{"@type":"Service","name":"Auto detailing website design","serviceType":"Web design for auto detailers","provider":{"@id":"https://groundwork-web.com/#business"},"areaServed":{"@type":"State","name":"Texas"},"url":"https://groundwork-web.com/pricing/","offers":[
- {"@type":"Offer","name":"Build","price":"399","priceCurrency":"USD","description":"One-time. Custom mobile-first detailing website with packages and prices, gallery, reviews, service areas, embedded booking, on-page SEO, 1 revision round, live in ~7 days."},
+{"@type":"ProfessionalService","@id":"https://groundwork-web.com/#business","name":"GroundWork-Web","url":"https://groundwork-web.com/","email":"groundworkweb@proton.me","priceRange":"$99 today, $399 build, then $99–$199 per month","address":{"@type":"PostalAddress","addressLocality":"Deer Park","addressRegion":"TX","addressCountry":"US"},"areaServed":{"@type":"Country","name":"United States"}},
+{"@type":"Service","name":"Auto detailing website design","serviceType":"Web design for auto detailers","provider":{"@id":"https://groundwork-web.com/#business"},"areaServed":{"@type":"Country","name":"United States"},"url":"https://groundwork-web.com/pricing/","offers":[
+ {"@type":"Offer","name":"Build","price":"399","priceCurrency":"USD","description":"$99 due today, $300 when you approve the preview. $399 total. Custom mobile-first detailing website with packages and prices, gallery, reviews, service areas, embedded booking, on-page SEO, 1 revision round, live in about 7 days."},
  {"@type":"Offer","name":"Host","price":"99","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"99","priceCurrency":"USD","billingDuration":"P1M"},"description":"Monthly. Hosting, SSL, uptime monitoring, booking embed kept working, fixes."},
  {"@type":"Offer","name":"Grow","price":"199","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"199","priceCurrency":"USD","billingDuration":"P1M"},"description":"Monthly. Everything in Host plus 2–3 updates a month, Google Business Profile and SEO check-in, priority support."}]},
 {"@type":"FAQPage","mainEntity":[
- {"@type":"Question","name":"How much does a detailing website cost elsewhere?","acceptedAnswer":{"@type":"Answer","text":"Niche agencies quote $1,500–$5,000 up front plus $150–$400 a month over 4–8 weeks. DIY builders run $20–$50 a month and cost your weekends. GroundWork is $399 plus $99 or $199 a month, live in about a week."}},
+ {"@type":"Question","name":"How much does a detailing website cost elsewhere?","acceptedAnswer":{"@type":"Answer","text":"Niche agencies quote $1,500–$5,000 up front plus $150–$400 a month, over 4–8 weeks. DIY builders run $20–$50 a month and cost you the weekends, and most end up looking homemade. We're $99 today and $399 total, then $99 or $199 a month, live in about a week, because we only build detailing sites and we'd rather earn the monthly plan than the build fee."}},
  {"@type":"Question","name":"Is the booking system extra?","acceptedAnswer":{"@type":"Answer","text":"No. Embedding your booking tool — Square Appointments, Booksy, Google, Urable or what you already use — is included in the $399 build."}},
- {"@type":"Question","name":"How do I pay?","acceptedAnswer":{"@type":"Answer","text":"Secure checkout via Stripe. $399 for the build at signup. The monthly plan is billed to the same card starting the month your site goes live."}},
+ {"@type":"Question","name":"How do I pay?","acceptedAnswer":{"@type":"Answer","text":"Secure checkout via Stripe. $99 today to start the build. $300 when you approve the preview. Host or Grow bills the same card starting the month your site goes live."}},
  {"@type":"Question","name":"Can I cancel?","acceptedAnswer":{"@type":"Answer","text":"Yes — 30 days written notice, no cancellation fee. After your final invoice we hand over your site files."}},
- {"@type":"Question","name":"Will the price go up on me?","acceptedAnswer":{"@type":"Answer","text":"No. Founding clients keep their rate for as long as they stay."}}
+ {"@type":"Question","name":"What if I don't like the site?","acceptedAnswer":{"@type":"Answer","text":"You get one revision on a private preview. If you don't want the site, we refund the $99. The $300 is charged only when you approve it live. After that, you can leave with 30 days notice."}},
+ {"@type":"Question","name":"Will the price go up on me?","acceptedAnswer":{"@type":"Answer","text":"No. Founding clients keep their rate for as long as they stay. New clients after the founding wave pay more."}},
+ {"@type":"Question","name":"Do you do ads?","acceptedAnswer":{"@type":"Answer","text":"Not right now. The work is the site, on-page SEO, and a Google Business Profile checklist so a shop can be found without ads."}}
 ]}]}
 </script>
 <link rel="stylesheet" href="/assets/css/tokens.css">
@@ -48,13 +71,15 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav">
   <div class="wrap">
-    <a class="wordmark" href="/"><i></i>GroundWork<span>-Web</span></a>
+    <a class="wordmark" href="/" translate="no"><i aria-hidden="true"></i>GroundWork-Web</a>
     <nav class="nav-links" id="primary-nav" aria-label="Primary">
       <a href="/demos/">Demos</a><a href="/pricing/">Pricing</a><a href="/audit/">Free audit</a><a href="/start/">Start now</a>
+      <a class="nav-book" href="/audit/">Book the audit</a>
     </nav>
     <div class="nav-cta">
-      <a class="link-arrow" href="/audit/">Book audit <span aria-hidden="true">→</span></a>
+      <a class="link-arrow" href="/audit/">Book the audit <span aria-hidden="true">→</span></a>
       <a class="btn btn-primary" href="/start/">Start now</a>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">Light</button>
       <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">Menu</button>
     </div>
   </div>
@@ -63,9 +88,9 @@
 <main id="main">
 <section class="page-hero">
   <div class="wrap">
-    <div class="eyebrow">Founding Texas pricing</div>
-    <h1>No quotes. <br>No surprises.</h1>
-    <p class="lede" style="margin-top:22px">What a car detailing website costs with us: one build fee, one monthly plan. Every price on this page is the price you pay. Founding rates are for our first wave of Texas shops and stay locked for as long as you're with us.</p>
+    <div class="eyebrow">Founding pricing</div>
+    <h1>What a detailing website costs.</h1>
+    <p class="lede" style="margin-top:22px">$99 today to start. $300 when you approve the preview. Then $99 a month to keep it up, or $199 if we also update it. $399 total. Founding rates stay locked. Based in Deer Park, Texas. Shops anywhere in the US.</p>
   </div>
 </section>
 
@@ -75,8 +100,8 @@
     <div class="tiers">
       <div class="tier">
         <div class="name">Build</div>
-        <div class="price">$399 <small>one‑time</small></div>
-        <div class="who">New site or full redesign. Always paired with Host or Grow.</div>
+        <div class="price">$99 <small>today</small></div>
+        <div class="who">$300 when you approve the preview. $399 total. Then Host or Grow.</div>
         <ul>
           <li>Custom‑branded, mobile‑first site</li>
           <li>Sections: hero, services, packages with prices, gallery, reviews, booking, service areas, contact</li>
@@ -86,7 +111,7 @@
           <li>1 revision round before launch</li>
           <li>Live in about 7 days once we have your content</li>
         </ul>
-        <a class="btn btn-ghost" href="/start/">Start with Build</a>
+        <a class="btn btn-ghost" href="/start/">Start now</a>
       </div>
       <div class="tier">
         <div class="name">Host</div>
@@ -99,7 +124,7 @@
           <li>DNS help if we manage your DNS</li>
           <li>Cancel with 30 days written notice</li>
         </ul>
-        <a class="btn btn-ghost" href="/start/?plan=host">Build + Host</a>
+        <a class="btn btn-ghost" href="/start/?plan=host">Start now<span class="sr-only"> on Host, $99 a month</span></a>
       </div>
       <div class="tier default">
         <div class="tag" aria-hidden="true">Most shops pick this</div>
@@ -114,10 +139,11 @@
           <li>Priority support — reply within 1 business day</li>
           <li>Cancel with 30 days written notice</li>
         </ul>
-        <a class="btn btn-primary" href="/start/?plan=grow">Build + Grow</a>
+        <a class="btn btn-primary" href="/start/?plan=grow">Start now<span class="sr-only"> on Grow, $199 a month</span></a>
       </div>
     </div>
-    <div class="founding"><i></i>Build is charged at signup. Your monthly plan starts the month your site goes live.</div>
+    <div class="founding"><i></i>$99 today. $300 when you approve. Your monthly plan starts the month your site goes live.</div>
+    <p class="fine" style="margin-top:14px"><a href="/before-you-pay/">Preview, refund, and how you leave</a>.</p>
   </div>
 </section>
 
@@ -133,7 +159,7 @@
         <li><div><b>Extra update pack — $79</b><br>Three additional edits in a month when you're running a big promo.</div></li>
         <li><div><b>New landing page — $149–$249</b><br>A dedicated service page (ceramic, PPF, fleet) or a city page for a second service area.</div></li>
         <li><div><b>Custom booking build — quoted</b><br>If Square/Booksy truly can't do what you need. We'll tell you honestly if you don't need it.</div></li>
-        <li><div><b>Domain — at cost</b><br>You own it. We can register it for you and invoice what the registrar charges.</div></li>
+        <li><div><b>Domain — at cost</b><br>Registered in your name when you approve the site. We invoice what the registrar charges.</div></li>
       </ul>
     </div>
   </div>
@@ -146,10 +172,10 @@
       <h2>Terms</h2>
     </div>
     <div>
-      <details><summary>How much does a detailing website cost elsewhere?</summary><p>Niche agencies quote $1,500–$5,000 up front plus $150–$400 a month, over 4–8 weeks. DIY builders run $20–$50 a month and cost you the weekends — and most end up looking homemade. We're $399 + $99 or $199 a month, live in about a week, because we only build detailing sites and we'd rather earn the retainer than the build fee.</p></details>
+      <details><summary>How much does a detailing website cost elsewhere?</summary><p>Niche agencies quote $1,500–$5,000 up front plus $150–$400 a month, over 4–8 weeks. DIY builders run $20–$50 a month and cost you the weekends, and most end up looking homemade. We're $99 today and $399 total, then $99 or $199 a month, live in about a week, because we only build detailing sites and we'd rather earn the monthly plan than the build fee.</p></details>
       <details><summary>Is the booking system extra?</summary><p>No. Embedding your booking tool — Square Appointments, Booksy, Google, Urable or what you already use — is part of the $399 build. A fully custom booking engine is the only thing quoted separately, and most shops don't need one.</p></details>
-      <details><summary>How do I pay?</summary><p>Secure checkout via Stripe. $399 for the build at signup. The monthly plan is billed to the same card starting the month your site goes live.</p></details>
-      <details><summary>What if I don't like the site?</summary><p>You get a revision round before launch, and we don't go live until you approve. If we can't get there, we refund the build fee minus any domain costs we've paid on your behalf.</p></details>
+      <details><summary>How do I pay?</summary><p>Secure checkout via Stripe. $99 today to start the build. $300 when you approve the preview. Host or Grow bills the same card starting the month your site goes live.</p></details>
+      <details><summary>What if I don't like the site?</summary><p>You get one revision on a private preview. If you don't want the site, we refund the $99. The $300 is charged only when you approve it live. After that, you can leave with 30 days notice.</p></details>
       <details><summary>Can I cancel?</summary><p>Yes — 30 days written notice, no cancellation fee. After your final invoice we hand over your site files.</p></details>
       <details><summary>Will the price go up on me?</summary><p>No. Founding clients keep their rate for as long as they stay. New clients after the founding wave pay more.</p></details>
       <details><summary>Do you do ads?</summary><p>Not right now. We'll get you found organically — Google Business Profile, on‑page SEO, and a site people actually book on.</p></details>
@@ -160,17 +186,18 @@
 <section class="final">
   <div class="wrap">
     <h2 class="sr-only">Next step</h2>
+    <p class="guarantee"><b>No risk.</b> You see the site before the $300. If you don't want it, the $99 comes back.</p>
     <div class="dual">
       <div>
-        <div class="pick">Ready</div>
-        <h3>Start now — $399</h3>
-        <p>Five‑minute form and checkout. We start this week.</p>
-        <a class="btn btn-primary" href="/start/">Start now</a>
+        <div class="pick">Buy it now</div>
+        <h3>Start now</h3>
+        <p>$99 today and we start this week. $300 when you approve the preview.</p>
+        <a class="btn btn-primary btn-lg" href="/start/">Start now</a>
       </div>
       <div>
-        <div class="pick">Not sure yet</div>
-        <h3>Book a free 15‑min audit</h3>
-        <p>We'll look at your current setup and tell you what's worth fixing — even if you don't hire us.</p>
+        <div class="pick">Or book a call</div>
+        <h3>Book the audit</h3>
+        <p>Free 15 minutes. We look at your current setup and tell you what's worth fixing, even if you don't hire us.</p>
         <a class="btn btn-ghost" href="/audit/">Book the audit</a>
       </div>
     </div>
@@ -182,7 +209,7 @@
   <div class="wrap">
     <div>© <span data-year></span> GroundWork‑Web · Deer Park, TX</div>
     <div><a data-gw-email href="#">Email GroundWork</a></div>
-    <nav aria-label="Footer"><a href="/demos/">Demos</a> · <a href="/pricing/">Pricing</a> · <a href="/guides/get-found-on-google/">Guide</a> · <a href="/audit/">Audit</a> · <a href="/start/">Start</a> · <a href="/privacy/">Privacy</a></nav>
+    <nav aria-label="Footer"><a href="/demos/">Demos</a> · <a href="/pricing/">Pricing</a> · <a href="/guides/get-found-on-google/">Get found</a> · <a href="/audit/">Audit</a> · <a href="/start/">Start</a> · <a href="/offer/">Offer</a> · <a href="/privacy/">Privacy</a></nav>
   </div>
 </footer>
 <script src="/assets/js/config.js"></script>

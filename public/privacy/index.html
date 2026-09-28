@@ -3,25 +3,45 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy — GroundWork-Web</title>
+<title>Privacy | GroundWork-Web</title>
 <meta name="description" content="What GroundWork-Web collects on this site, why, and how to opt out. Plain English, no cookies, no third-party trackers.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <meta name="theme-color" content="#0C0D10">
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem("gw_theme");
+    var light = window.matchMedia("(prefers-color-scheme: light)").matches;
+    var mode = saved === "light" || saved === "dark" ? saved : (light ? "light" : "dark");
+    document.documentElement.setAttribute("data-theme", mode);
+    document.documentElement.style.colorScheme = mode;
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", mode === "light" ? "#F7F4EE" : "#0C0D10");
+    document.addEventListener("DOMContentLoaded", function () {
+      var btn = document.querySelector("[data-theme-toggle]");
+      if (!btn) return;
+      var next = mode === "dark" ? "light" : "dark";
+      btn.textContent = next === "light" ? "Light" : "Dark";
+      btn.setAttribute("aria-pressed", mode === "light" ? "true" : "false");
+      btn.setAttribute("aria-label", "Switch to " + next + " mode");
+    });
+  } catch (e) {}
+})();
+</script>
+
 <!-- seo -->
 <link rel="canonical" href="https://groundwork-web.com/privacy/">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="GroundWork-Web">
 <meta property="og:url" content="https://groundwork-web.com/privacy/">
-<meta property="og:title" content="Privacy — GroundWork-Web">
+<meta property="og:title" content="Privacy | GroundWork-Web">
 <meta property="og:description" content="What GroundWork-Web collects on this site, why, and how to opt out. Plain English, no cookies, no third-party trackers.">
 <meta property="og:image" content="https://groundwork-web.com/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="GroundWork-Web — websites that get detailers booked">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Privacy — GroundWork-Web">
+<meta name="twitter:title" content="Privacy | GroundWork-Web">
 <meta name="twitter:description" content="What GroundWork-Web collects on this site, why, and how to opt out. Plain English, no cookies, no third-party trackers.">
 <meta name="twitter:image" content="https://groundwork-web.com/assets/og.png">
 <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
@@ -43,12 +63,15 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav">
   <div class="wrap">
-    <a class="wordmark" href="/"><i></i>GroundWork<span>-Web</span></a>
+    <a class="wordmark" href="/" translate="no"><i aria-hidden="true"></i>GroundWork-Web</a>
     <nav class="nav-links" id="primary-nav" aria-label="Primary">
       <a href="/demos/">Demos</a><a href="/pricing/">Pricing</a><a href="/audit/">Free audit</a><a href="/start/">Start now</a>
+      <a class="nav-book" href="/audit/">Book the audit</a>
     </nav>
     <div class="nav-cta">
-      <a class="btn btn-primary" href="/audit/">Book audit</a>
+      <a class="link-arrow" href="/audit/">Book the audit <span aria-hidden="true">→</span></a>
+      <a class="btn btn-primary" href="/start/">Start now</a>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">Light</button>
       <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">Menu</button>
     </div>
   </div>
@@ -115,7 +138,7 @@
   <div class="wrap">
     <div>© <span data-year></span> GroundWork‑Web · Deer Park, TX</div>
     <div><a data-gw-email href="#">Email GroundWork</a></div>
-    <nav aria-label="Footer"><a href="/demos/">Demos</a> · <a href="/pricing/">Pricing</a> · <a href="/guides/get-found-on-google/">Guide</a> · <a href="/audit/">Audit</a> · <a href="/start/">Start</a> · <a href="/privacy/" aria-current="page">Privacy</a></nav>
+    <nav aria-label="Footer"><a href="/demos/">Demos</a> · <a href="/pricing/">Pricing</a> · <a href="/guides/get-found-on-google/">Get found</a> · <a href="/audit/">Audit</a> · <a href="/start/">Start</a> · <a href="/offer/">Offer</a> · <a href="/privacy/" aria-current="page">Privacy</a></nav>
   </div>
 </footer>
 <script src="/assets/js/config.js"></script>

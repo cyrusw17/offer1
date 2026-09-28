@@ -1,4 +1,41 @@
-/* GroundWork — Theme A "Bay Door" design tokens */
+/* GroundWork — Bay Door. Self-hosted so the site does not request Google Fonts. */
+@font-face {
+  font-family: "Oswald";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/assets/fonts/oswald-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Oswald";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/assets/fonts/oswald-700.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Source Sans 3";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/source-sans-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Source Sans 3";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/assets/fonts/source-sans-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Source Sans 3";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/source-sans-400i.woff2") format("woff2");
+}
+
+/* GroundWork — Theme A "Bay Door". Dark is the default. Light tokens apply when the device asks for light, or when the visitor switches. */
 :root {
   /* surfaces */
   --void: #0C0D10;
@@ -22,6 +59,8 @@
   --signal: #E5A00D;
   --signal-press: #B87D08;
   --signal-ink: #1A1200;
+  --signal-text: #E5A00D;
+  --danger: #FFB4A8;
 
   /* type */
   --font-display: "Oswald", "Barlow Condensed", "Arial Narrow", sans-serif;
@@ -30,10 +69,52 @@
   /* layout */
   --max: 1180px;
   --gutter: clamp(20px, 5vw, 64px);
-  --radius: 6px;
-  --radius-sm: 4px;
+  --radius: 10px;
+  --radius-sm: 8px;
   --bar-h: 44px;
 
   /* motion */
   --ease: cubic-bezier(.2, .7, .2, 1);
+
+  color-scheme: dark;
+  --nav: rgba(12, 13, 16, .92);
+  --feature: #0C0D10;
+  --on-feature: #E6E1D6;
+  --on-feature-mute: #8B909A;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --void: #F7F4EE;
+  --panel: #FFFFFF;
+  --panel-2: #EFEBE3;
+  --spot: #E8E2D6;
+  --bone: #14151A;
+  --mute: #4A5160;
+  --steel: #C9C2B6;
+  --steel-soft: #E4DED3;
+  --steel-text: #5C616B;
+  --rail: #D5CFC4;
+  --nav: rgba(247, 244, 238, .94);
+  --signal-text: #7A5206;
+  --danger: #9A2E22;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+    --void: #F7F4EE;
+    --panel: #FFFFFF;
+    --panel-2: #EFEBE3;
+    --spot: #E8E2D6;
+    --bone: #14151A;
+    --mute: #4A5160;
+    --steel: #C9C2B6;
+    --steel-soft: #E4DED3;
+    --steel-text: #5C616B;
+    --rail: #D5CFC4;
+    --nav: rgba(247, 244, 238, .94);
+    --signal-text: #7A5206;
+    --danger: #9A2E22;
+  }
 }

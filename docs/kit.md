@@ -4,7 +4,7 @@ Same bones, different skin. Every demo and client site loads `kit.css` and overr
 
 ## Clone a demo for a client (target: ~1 day)
 
-1. Copy `site/demos/bayou-shine/` (dark) or `site/demos/lone-star-mobile/` (light) to the client's folder.
+1. Copy `offer1/public/demos/bayou-shine/` (dark) or `offer1/public/demos/lone-star-mobile/` (light) to the client's folder.
 2. Replace the `--k-*` tokens with the client's colors. Keep `--k-accent` for CTAs only.
 3. Swap copy: shop name, cities, services, packages + prices, reviews (pull from Google), hours, phone.
 4. Replace the `.k-art` and `.k-gallery` CSS placeholders with `<img>` tags of their real work.

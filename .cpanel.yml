@@ -16,14 +16,14 @@ deployment:
 
     # Sync the site. Whole folders are replaced so deleted files don't linger;
     # api/ is overlaid (not replaced) so api/config.php on the server survives.
-    - /bin/rm -rf $DEPLOYPATH/assets $DEPLOYPATH/kit $DEPLOYPATH/demos $DEPLOYPATH/guides $DEPLOYPATH/pricing $DEPLOYPATH/audit $DEPLOYPATH/start $DEPLOYPATH/thanks $DEPLOYPATH/privacy
+    - /bin/rm -rf $DEPLOYPATH/assets $DEPLOYPATH/kit $DEPLOYPATH/demos $DEPLOYPATH/guides $DEPLOYPATH/pricing $DEPLOYPATH/audit $DEPLOYPATH/start $DEPLOYPATH/thanks $DEPLOYPATH/privacy $DEPLOYPATH/offer $DEPLOYPATH/before-you-pay
     - /bin/cp -R public/. $DEPLOYPATH/
 
     # First deploy only: create api/config.php with a random dashboard key
-    - if [ ! -f $DEPLOYPATH/api/config.php ]; then KEY=$(/usr/bin/openssl rand -hex 24 2>/dev/null || /bin/date +%s%N | /usr/bin/sha256sum | /usr/bin/cut -c1-48); /usr/bin/printf '<?php\ndefine("GW_STATS_KEY", "%s");\ndefine("GW_LEAD_EMAIL", "cyruswilburn@icloud.com");\n' "$KEY" > $DEPLOYPATH/api/config.php; fi
+    - if [ ! -f $DEPLOYPATH/api/config.php ]; then KEY=$(/usr/bin/openssl rand -hex 24 2>/dev/null || /bin/date +%s%N | /usr/bin/sha256sum | /usr/bin/cut -c1-48); /usr/bin/printf '<?php\ndefine("GW_STATS_KEY", "%s");\ndefine("GW_LEAD_EMAIL", "groundworkweb@proton.me");\n' "$KEY" > $DEPLOYPATH/api/config.php; fi
 
     # Keep lead destination current without touching the dashboard key
-    - /bin/sed -i 's/define("GW_LEAD_EMAIL".*/define("GW_LEAD_EMAIL", "cyruswilburn@icloud.com");/' $DEPLOYPATH/api/config.php
+    - /bin/sed -i 's/define("GW_LEAD_EMAIL".*/define("GW_LEAD_EMAIL", "groundworkweb@proton.me");/' $DEPLOYPATH/api/config.php
 
     # Analytics + leads database folder, above the web root
     - /bin/mkdir -p $HOME/gw-data
