@@ -24,7 +24,7 @@ window.GW = {
   },
 
   // Lead endpoint. /api/lead.php stores every start/audit submission in the
-  // analytics DB and emails it (set GW_LEAD_EMAIL in api/config.php).
+  // analytics DB and emails it to GW.email / GW_LEAD_EMAIL.
   // Swap for Formspree/Getform if you prefer: "https://formspree.io/f/xxxx"
   formEndpoint: "/api/lead.php",
 

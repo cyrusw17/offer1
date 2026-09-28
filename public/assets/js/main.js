@@ -1,8 +1,8 @@
-/* GroundWork — shared behaviour */
+/* GroundWork-Web v2. Shared behaviour for every page. */
 (function () {
   const GW = window.GW || {};
 
-  // ---- UTM persistence: keep attribution across internal links
+  // ---- Attribution: keep utm / demo / city across internal links
   const params = new URLSearchParams(location.search);
   const keys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "demo", "city"];
   const saved = JSON.parse(localStorage.getItem("gw_attr") || "{}");
@@ -11,32 +11,28 @@
   if (touched) localStorage.setItem("gw_attr", JSON.stringify(saved));
   window.gwAttr = saved;
 
-  // ---- Mobile nav
-  const nav = document.querySelector(".nav");
+  // ---- Mobile menu
+  const header = document.querySelector(".site-header");
   const toggle = document.querySelector(".nav-toggle");
-  if (nav && toggle) {
-    const links = nav.querySelector(".nav-links");
+  if (header && toggle) {
+    const links = header.querySelector(".nav-links");
     if (links && !links.id) links.id = "primary-nav";
     if (links) toggle.setAttribute("aria-controls", links.id);
     const setOpen = (open) => {
-      nav.classList.toggle("open", open);
+      header.classList.toggle("open", open);
       toggle.setAttribute("aria-expanded", String(open));
       toggle.textContent = open ? "Close" : "Menu";
-      if (open && links) {
-        const first = links.querySelector("a");
-        if (first) first.focus();
-      }
+      if (open && links) { const first = links.querySelector("a"); if (first) first.focus(); }
     };
-    toggle.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
-    // Escape closes the menu and returns focus to the toggle
+    toggle.addEventListener("click", () => setOpen(!header.classList.contains("open")));
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && nav.classList.contains("open")) { setOpen(false); toggle.focus(); }
+      if (e.key === "Escape" && header.classList.contains("open")) { setOpen(false); toggle.focus(); }
     });
   }
 
-  // ---- Light / dark. Dark is the start. A saved choice wins; otherwise follow the device.
+  // ---- Light / dark. Light is the default look. A saved choice wins; otherwise follow the device.
   const themeBtn = document.querySelector("[data-theme-toggle]");
-  const systemTheme = () => matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  const systemTheme = () => matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   const activeTheme = () => document.documentElement.dataset.theme || systemTheme();
   const paintTheme = (mode, persist) => {
     document.documentElement.dataset.theme = mode;
@@ -45,22 +41,20 @@
     if (themeBtn) {
       const next = mode === "dark" ? "light" : "dark";
       themeBtn.textContent = next === "light" ? "Light" : "Dark";
-      themeBtn.setAttribute("aria-pressed", mode === "light" ? "true" : "false");
+      themeBtn.setAttribute("aria-pressed", mode === "dark" ? "true" : "false");
       themeBtn.setAttribute("aria-label", "Switch to " + next + " mode");
     }
-    const meta = document.querySelector('meta[name="theme-color"]:not([media])');
-    if (meta) meta.setAttribute("content", mode === "light" ? "#F7F4EE" : "#0C0D10");
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", mode === "dark" ? "#0F1013" : "#FFFFFF");
   };
   paintTheme(activeTheme(), false);
-  if (themeBtn) {
-    themeBtn.addEventListener("click", () => paintTheme(activeTheme() === "dark" ? "light" : "dark", true));
-  }
-  matchMedia("(prefers-color-scheme: light)").addEventListener("change", () => {
+  if (themeBtn) themeBtn.addEventListener("click", () => paintTheme(activeTheme() === "dark" ? "light" : "dark", true));
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
     if (!localStorage.getItem("gw_theme")) paintTheme(systemTheme(), false);
   });
 
   // ---- Current page marker
-  document.querySelectorAll(".nav-links a").forEach(a => {
+  document.querySelectorAll(".nav-links a, .footer-bottom nav a").forEach(a => {
     const href = a.getAttribute("href");
     if (href && href !== "/" && location.pathname.startsWith(href)) a.setAttribute("aria-current", "page");
   });
@@ -78,24 +72,61 @@
   fitFrames();
   addEventListener("resize", fitFrames);
 
-  // ---- Fill contact placeholders
+  // ---- Contact placeholders. Phone links only appear when a number is configured.
   document.querySelectorAll("[data-gw-email]").forEach(el => {
-    el.textContent = GW.email; if (el.tagName === "A") el.href = "mailto:" + GW.email;
+    if (!el.children.length && el.dataset.gwEmail !== "keep") el.textContent = GW.email;
+    if (el.tagName === "A") el.href = "mailto:" + GW.email;
   });
-
-  // ---- Year
+  document.querySelectorAll("[data-gw-phone]").forEach(el => {
+    if (!GW.phone) {
+      el.hidden = true;
+      el.setAttribute("aria-hidden", "true");
+      if (el.tagName === "A") el.removeAttribute("href");
+      return;
+    }
+    el.hidden = false;
+    el.removeAttribute("aria-hidden");
+    el.textContent = GW.phone;
+    if (el.tagName === "A") el.href = "tel:" + GW.phone.replace(/[^\d+]/g, "");
+  });
   document.querySelectorAll("[data-year]").forEach(el => el.textContent = new Date().getFullYear());
 
-  // ---- Calendly / booking embed (audit page)
+  // ---- Reveal on scroll (IntersectionObserver, no scroll listener)
+  const reveals = document.querySelectorAll(".reveal");
+  if (reveals.length && "IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.1 });
+    reveals.forEach(el => io.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add("in"));
+  }
+
+  // ---- Order summary on /start/: follows the plan radio
+  const summaryPlan = document.querySelector("[data-summary-plan]");
+  if (summaryPlan) {
+    const price = GW.pricing || { host: 99, grow: 199 };
+    const label = document.querySelector("[data-summary-plan-name]");
+    const paint = () => {
+      const r = document.querySelector("input[name=plan]:checked");
+      const plan = r && r.value === "host" ? "host" : "grow";
+      summaryPlan.textContent = "$" + price[plan] + "/mo";
+      if (label) label.textContent = plan === "host" ? "Host" : "Grow";
+    };
+    document.querySelectorAll("input[name=plan]").forEach(r => r.addEventListener("change", paint));
+    paint();
+  }
+
+  // ---- Calendly embed (audit page)
   const embed = document.querySelector("[data-calendly]");
   if (embed) {
     if (GW.calendlyUrl) {
       const url = new URL(GW.calendlyUrl);
+      const dark = activeTheme() === "dark";
       url.searchParams.set("hide_gdpr_banner", "1");
-      url.searchParams.set("background_color", "16181e");
-      url.searchParams.set("text_color", "e6e1d6");
+      url.searchParams.set("background_color", dark ? "181a1f" : "ffffff");
+      url.searchParams.set("text_color", dark ? "f2efe8" : "111214");
       url.searchParams.set("primary_color", "e5a00d");
-      // Carry campaign attribution into the booking so each call shows its source in Calendly
       const attr = window.gwAttr || {};
       ["utm_source", "utm_medium", "utm_campaign", "utm_content"].forEach(k => { if (attr[k]) url.searchParams.set(k, attr[k]); });
       if (attr.demo || attr.city) url.searchParams.set("utm_term", [attr.demo, attr.city].filter(Boolean).join("-"));
@@ -107,7 +138,6 @@
       const s = document.createElement("script");
       s.src = "https://assets.calendly.com/assets/external/widget.js"; s.async = true;
       document.body.appendChild(s);
-      // When a call is booked: count the conversion, then hand off to the thanks page
       addEventListener("message", (e) => {
         if (!/https:\/\/([a-z0-9-]+\.)?calendly\.com$/.test(e.origin)) return;
         if (e.data && e.data.event === "calendly.event_scheduled") {
@@ -126,7 +156,7 @@
     }
   }
 
-  // ---- Start / audit forms
+  // ---- Lead forms (start / audit). Custom validation, then POST, then Stripe or thanks.
   document.querySelectorAll("form[data-gw-form]").forEach(form => {
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -145,8 +175,7 @@
             ? "Use an email like name@shop.com."
             : "Add this so we know how to reach you.";
           const label = el.closest("label");
-          if (label) label.insertAdjacentElement("afterend", msg);
-          else el.after(msg);
+          if (label) label.insertAdjacentElement("afterend", msg); else el.after(msg);
         });
         bad[0].focus();
         return;
@@ -158,11 +187,10 @@
       const btn = form.querySelector("button[type=submit]");
       const status = form.querySelector("[role=status]");
       const say = (msg) => { if (status) status.textContent = msg; };
-      if (btn) { btn.disabled = true; btn.dataset.label = btn.textContent; btn.textContent = "Sending…"; btn.setAttribute("aria-busy", "true"); }
-      say("Sending your details…");
+      if (btn) { btn.disabled = true; btn.dataset.label = btn.textContent; btn.textContent = "Sending"; btn.setAttribute("aria-busy", "true"); }
+      say("Sending your details.");
       localStorage.setItem("gw_lead", JSON.stringify(data));
 
-      // Deliver the lead
       let delivered = false;
       if (GW.formEndpoint) {
         try {
@@ -175,17 +203,15 @@
       }
       if (!delivered) {
         const body = Object.entries(data).map(([k, v]) => `${k}: ${v}`).join("\n");
-        const mail = `mailto:${GW.email}?subject=${encodeURIComponent("[GroundWork] " + (form.dataset.gwForm))}&body=${encodeURIComponent(body)}`;
+        const mail = `mailto:${GW.email}?subject=${encodeURIComponent("[GroundWork] " + form.dataset.gwForm)}&body=${encodeURIComponent(body)}`;
+        window.open(mail, "_blank");
         if (form.dataset.gwForm === "start") {
-          window.open(mail, "_blank");
           say("We could not send your details. Email us from the window that opened, or try again.");
           if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label || "Continue to checkout"; btn.removeAttribute("aria-busy"); }
           return;
         }
-        window.open(mail, "_blank");
       }
 
-      // Buy-now: only after the lead actually arrived
       if (form.dataset.gwForm === "start") {
         const plan = data.plan === "host" ? "host" : "grow";
         const link = GW.stripe && (GW.stripe[plan] || GW.stripe.build);
@@ -204,11 +230,11 @@
     });
   });
 
-  // ---- Thanks page personalisation
+  // ---- Thanks page
   const thanks = document.querySelector("[data-thanks]");
   if (thanks) {
     const lead = JSON.parse(localStorage.getItem("gw_lead") || "{}");
-    const from = new URLSearchParams(location.search).get("from");
+    const from = new URLSearchParams(location.search).get("from") || "";
     const who = document.querySelector("[data-thanks-name]");
     if (who && lead.shop) who.textContent = lead.shop;
     document.querySelectorAll("[data-thanks-if]").forEach(el => { el.hidden = el.dataset.thanksIf !== from; });
