@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<title>GroundWork</title>
+<meta name="theme-color" content="#FFFFFF">
+<script>(function(){try{var s=localStorage.getItem("gw_theme");var d=matchMedia("(prefers-color-scheme: dark)").matches;var m=s==="light"||s==="dark"?s:(d?"dark":"light");document.documentElement.setAttribute("data-theme",m);document.documentElement.style.colorScheme=m;var t=document.querySelector('meta[name="theme-color"]');if(t)t.setAttribute("content",m==="dark"?"#0F1013":"#FFFFFF");}catch(e){}})();</script>
+<link rel="stylesheet" href="/assets/css/tokens.css?v=20260928c">
+<link rel="stylesheet" href="/assets/css/site.css?v=20260928c">
+<link rel="stylesheet" href="list.css?v=20260928e">
+<link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/" translate="no"><span class="logo-dot" aria-hidden="true"></span>GroundWork-Web</a>
+    <div class="header-cta">
+      <button class="icon-btn" type="button" data-theme-toggle aria-pressed="false">Dark</button>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="container gate-wrap">
+    <section id="gate" class="gate">
+      <p class="eyebrow">Private</p>
+      <h1 class="lock-h" id="page-title">This page is locked.</h1>
+      <p class="lead" id="page-lead">Enter the access key to open it.</p>
+      <form id="gate-form" class="form">
+        <label>Access key
+          <input id="key" name="key" type="password" autocomplete="off" spellcheck="false" required minlength="12">
+        </label>
+        <p class="field-error" id="gate-error" role="alert" hidden></p>
+        <button class="btn btn-accent" id="open" type="submit">Open</button>
+      </form>
+    </section>
+    <section id="board" hidden>
+      <p class="eyebrow">Private</p>
+      <h1 class="lock-h" id="board-title">Detailer call list</h1>
+      <p class="lead" id="board-count"></p>
+      <div class="tools">
+        <label>Search
+          <input id="q" type="search" placeholder="Business, city, or phone" autocomplete="off">
+        </label>
+        <label>Area
+          <select id="area">
+            <option value="all">All</option>
+            <option value="Houston area">Houston area</option>
+            <option value="Other Texas">Other Texas</option>
+          </select>
+        </label>
+        <label>Website
+          <select id="web">
+            <option value="all">Any missing website</option>
+            <option value="No website">No website at all</option>
+            <option value="social">Social page only</option>
+          </select>
+        </label>
+      </div>
+      <p class="field-error" id="empty" hidden>Nothing matches that filter.</p>
+      <div class="leads" id="leads"></div>
+    </section>
+  </div>
+</main>
+<script src="/assets/js/main.js?v=20260928c" defer></script>
+<script src="app.js?v=20260928e" defer></script>
+</body>
+</html>
