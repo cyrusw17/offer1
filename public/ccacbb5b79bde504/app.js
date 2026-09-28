@@ -73,6 +73,15 @@
     return hay.indexOf(query) !== -1;
   }
 
+  function scriptBlock(shop) {
+    var parts = shop.script || [];
+    if (!parts.length) return "";
+    var body = parts.map(function (part) {
+      return '<p class="script-line"><span>' + esc(part.label) + '</span>' + esc(part.text) + '</p>';
+    }).join("");
+    return '<details class="script"><summary>Cold call script</summary>' + body + '</details>';
+  }
+
   function render() {
     var shown = shops.filter(matches);
     emptyEl.hidden = shown.length !== 0;
@@ -88,8 +97,8 @@
           (quote ? '<p class="quote">' + esc(quote) + '</p>' : '') +
           '<div class="actions">' +
             '<a class="btn btn-accent btn-sm" href="tel:' + esc(String(shop.phone).replace(/[^\d+]/g, "")) + '">Call</a>' +
-            '<a class="btn btn-secondary btn-sm" href="' + esc(shop.url) + '" rel="noreferrer noopener">Google profile</a>' +
           '</div>' +
+          scriptBlock(shop) +
         '</article>'
       );
     }).join("");
