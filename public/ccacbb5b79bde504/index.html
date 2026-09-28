@@ -10,7 +10,7 @@
 <script>(function(){try{var s=localStorage.getItem("gw_theme");var d=matchMedia("(prefers-color-scheme: dark)").matches;var m=s==="light"||s==="dark"?s:(d?"dark":"light");document.documentElement.setAttribute("data-theme",m);document.documentElement.style.colorScheme=m;var t=document.querySelector('meta[name="theme-color"]');if(t)t.setAttribute("content",m==="dark"?"#0F1013":"#FFFFFF");}catch(e){}})();</script>
 <link rel="stylesheet" href="/assets/css/tokens.css?v=20260928c">
 <link rel="stylesheet" href="/assets/css/site.css?v=20260928c">
-<link rel="stylesheet" href="list.css?v=20260928g">
+<link rel="stylesheet" href="list.css?v=20260928h">
 <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
 </head>
 <body>
@@ -41,6 +41,12 @@
       <p class="eyebrow">Private</p>
       <h1 class="lock-h" id="board-title">Detailer call list</h1>
       <p class="lead" id="board-count"></p>
+      <div class="tabs" role="tablist" aria-label="Call lists">
+        <button class="tab" type="button" data-tab="todo" aria-selected="true">To call</button>
+        <button class="tab" type="button" data-tab="done">Already called</button>
+        <button class="tab" type="button" data-tab="priority">Priority recall</button>
+        <button class="tab" type="button" data-tab="recall">Call again</button>
+      </div>
       <div class="tools">
         <label>Search
           <input id="q" type="search" placeholder="Business, city, or phone" autocomplete="off">
@@ -66,6 +72,6 @@
   </div>
 </main>
 <script src="/assets/js/main.js?v=20260928c" defer></script>
-<script src="app.js?v=20260928g" defer></script>
+<script src="app.js?v=20260928h" defer></script>
 </body>
 </html>
