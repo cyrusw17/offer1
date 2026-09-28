@@ -73,13 +73,22 @@
     return hay.indexOf(query) !== -1;
   }
 
+  var START_LINK = "https://groundwork-web.com/start/";
+  var BOOK_LINK = "https://groundwork-web.com/audit/";
+
   function scriptBlock(shop) {
     var parts = shop.script || [];
-    if (!parts.length) return "";
     var body = parts.map(function (part) {
       return '<p class="script-line"><span>' + esc(part.label) + '</span>' + esc(part.text) + '</p>';
     }).join("");
-    return '<details class="script"><summary>Cold call script</summary>' + body + '</details>';
+    return (
+      '<div class="script">' + body +
+        '<div class="actions">' +
+          '<button class="btn btn-accent btn-sm" type="button" data-copy="' + esc(START_LINK) + '">Copy start link</button>' +
+          '<button class="btn btn-secondary btn-sm" type="button" data-copy="' + esc(BOOK_LINK) + '">Copy booking link</button>' +
+        '</div>' +
+      '</div>'
+    );
   }
 
   function render() {
@@ -88,13 +97,11 @@
     countEl.textContent = shown.length + " of " + shops.length + " shops. Houston area is first.";
     leadsEl.innerHTML = shown.map(function (shop) {
       var who = shop.ask ? "Ask for " + shop.ask : "Ask for the owner";
-      var quote = shop.when ? shop.when + " — " + shop.by + ": " + shop.quote : shop.quote;
       return (
         '<article class="shop">' +
           '<div><h2>' + esc(shop.biz) + '</h2><p class="who">' + esc(who) + '</p></div>' +
           '<p class="meta"><span>' + esc(shop.phone) + '</span><span>' + esc(shop.city) + '</span><span>' +
             esc(Number(shop.rating).toFixed(1)) + ' (' + esc(shop.n) + ')</span><span>' + esc(shop.web) + '</span></p>' +
-          (quote ? '<p class="quote">' + esc(quote) + '</p>' : '') +
           '<div class="actions">' +
             '<a class="btn btn-accent btn-sm" href="tel:' + esc(String(shop.phone).replace(/[^\d+]/g, "")) + '">Call</a>' +
           '</div>' +
@@ -144,6 +151,16 @@
           showError("That key does not open this list.");
         }
       });
+  });
+
+  leadsEl.addEventListener("click", function (event) {
+    var button = event.target.closest("[data-copy]");
+    if (!button) return;
+    var label = button.textContent;
+    navigator.clipboard.writeText(button.getAttribute("data-copy")).then(function () {
+      button.textContent = "Copied";
+      setTimeout(function () { button.textContent = label; }, 1500);
+    });
   });
 
   [searchEl, areaEl, webEl].forEach(function (el) {

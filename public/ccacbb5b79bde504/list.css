@@ -11,10 +11,10 @@
 .quote{margin:0;color:var(--ink-2);font-size:1rem}
 .actions{display:flex;flex-wrap:wrap;gap:8px}
 .actions .btn{min-height:44px}
-.script{border-top:1px solid var(--line);margin-top:4px;padding-top:4px}
-.script summary{min-height:44px;display:flex;align-items:center;font-weight:600;cursor:pointer}
+.script{border-top:1px solid var(--line);margin-top:4px;padding-top:12px;display:grid;gap:4px}
 .script-line{margin:0 0 12px;font-size:1rem;line-height:1.5;color:var(--ink)}
 .script-line span{display:block;margin-bottom:2px;font-size:.875rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-text)}
+.script .actions .btn{flex:1 1 160px}
 
 @media (min-width:640px){
   .gate{padding:32px 28px}
