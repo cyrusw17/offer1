@@ -31,6 +31,7 @@ $byDay   = $q("SELECT date(ts,'unixepoch') d, SUM(type='pageview') pv, COUNT(DIS
 $pages   = $q("SELECT path, COUNT(*) n, COUNT(DISTINCT vhash||date(ts,'unixepoch')) u FROM events WHERE type='pageview' AND ts>=? GROUP BY path ORDER BY n DESC LIMIT 30", [$since]);
 $clicks  = $q("SELECT target, label, path AS from_page, COUNT(*) n FROM events WHERE type='click' AND ts>=? GROUP BY target,label,path ORDER BY n DESC LIMIT 60", [$since]);
 $ctas    = $q("SELECT label, COUNT(*) n FROM events WHERE type='click' AND ts>=? AND (target LIKE '/audit/%' OR target LIKE '/start/%' OR target LIKE '%buy.stripe.com%' OR target LIKE '%calendly.com%') GROUP BY label ORDER BY n DESC", [$since]);
+$ui      = $q("SELECT path, label, COUNT(*) n FROM events WHERE type='ui' AND ts>=? GROUP BY path,label ORDER BY path, n DESC", [$since]);
 $refs    = $q("SELECT ref, COUNT(*) n FROM events WHERE type='pageview' AND ref<>'' AND ts>=? GROUP BY ref ORDER BY n DESC LIMIT 20", [$since]);
 $camps   = $q("SELECT utm_source s, utm_medium m, utm_campaign c, COUNT(*) n, COUNT(DISTINCT vhash||date(ts,'unixepoch')) u FROM events WHERE type='pageview' AND (utm_source<>'' OR utm_campaign<>'') AND ts>=? GROUP BY s,m,c ORDER BY n DESC LIMIT 30", [$since]);
 $demos   = $q("SELECT demo, COUNT(*) n FROM events WHERE demo<>'' AND ts>=? GROUP BY demo ORDER BY n DESC", [$since]);
@@ -117,6 +118,11 @@ p.note{color:var(--mute);font-size:13px;margin-top:40px}
 <?php if (!$submits): ?><tr><td colspan="2" class="empty">None yet.</td></tr><?php endif; ?>
 <?php foreach ($submits as $r): ?><tr><td><?= $h($r['label']) ?></td><td class="n"><?= $r['n'] ?></td></tr><?php endforeach; ?></table></section>
 </div>
+
+<h2>Interactions (picker, slider, phone demo, price section)</h2>
+<table><tr><th>Page</th><th>Interaction</th><th>Count</th></tr>
+<?php if (!$ui): ?><tr><td colspan="3" class="empty">None yet.</td></tr><?php endif; ?>
+<?php foreach ($ui as $r): ?><tr><td><?= $h($r['path']) ?></td><td><?= $h($r['label']) ?></td><td class="n"><?= $r['n'] ?></td></tr><?php endforeach; ?></table>
 
 <h2>Pages</h2>
 <table><tr><th>Path</th><th>Views</th><th>Uniques</th></tr>

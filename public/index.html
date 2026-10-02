@@ -5,12 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Auto Detailing Website Design | GroundWork-Web</title>
 <meta name="description" content="Auto detailing website design with prices on the page and online booking. $99 today, $300 when you approve, then $99 or $199 a month. Deer Park, Texas.">
-<meta name="theme-color" content="#FFFFFF">
-<script>(function(){try{var s=localStorage.getItem("gw_theme");var d=matchMedia("(prefers-color-scheme: dark)").matches;var m=s==="light"||s==="dark"?s:(d?"dark":"light");document.documentElement.setAttribute("data-theme",m);document.documentElement.style.colorScheme=m;var t=document.querySelector('meta[name="theme-color"]');if(t)t.setAttribute("content",m==="dark"?"#0F1013":"#FFFFFF");}catch(e){}})();</script>
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E0F12" media="(prefers-color-scheme: dark)">
 <link rel="preload" href="/assets/fonts/oswald-600.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/source-sans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/tokens.css?v=20260928c">
-<link rel="stylesheet" href="/assets/css/site.css?v=20260928c">
+<link rel="stylesheet" href="/assets/ds/tokens.css?v=3.1">
+<link rel="stylesheet" href="/assets/ds/base.css?v=3.1">
+<link rel="stylesheet" href="/assets/ds/components.css?v=3.2">
 <link rel="canonical" href="https://groundwork-web.com/">
 <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
@@ -18,231 +19,171 @@
 <meta property="og:site_name" content="GroundWork-Web">
 <meta property="og:url" content="https://groundwork-web.com/">
 <meta property="og:title" content="Auto Detailing Website Design | GroundWork-Web">
-<meta property="og:description" content="Auto detailing website design with prices on the page and online booking. $99 today, $300 when you approve, then $99 or $199 a month.">
+<meta property="og:description" content="Auto detailing website design with prices on the page and online booking. $99 today, $300 when you approve, then $99 or $199 a month. Deer Park, Texas.">
 <meta property="og:image" content="https://groundwork-web.com/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="GroundWork-Web: websites that get detailers booked">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Auto Detailing Website Design | GroundWork-Web">
-<meta name="twitter:description" content="Auto detailing website design with prices on the page and online booking. $99 today, $300 when you approve, then $99 or $199 a month.">
+<meta name="twitter:description" content="Auto detailing website design with prices on the page and online booking. $99 today, $300 when you approve, then $99 or $199 a month. Deer Park, Texas.">
 <meta name="twitter:image" content="https://groundwork-web.com/assets/og.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[
-{"@type":"ProfessionalService","@id":"https://groundwork-web.com/#business","name":"GroundWork-Web","url":"https://groundwork-web.com/","logo":"https://groundwork-web.com/assets/icon.svg","image":"https://groundwork-web.com/assets/og.png","email":"groundworkweb@proton.me","description":"Auto detailing website design with online booking for mobile detailers and detail shops. Based in Deer Park, Texas, and taking clients anywhere in the US. Custom-coded, live in about a week, then hosted and maintained monthly.","priceRange":"$99 today, $399 build, then $99-$199 per month","address":{"@type":"PostalAddress","addressLocality":"Deer Park","addressRegion":"TX","addressCountry":"US"},"areaServed":{"@type":"Country","name":"United States"},"knowsAbout":["auto detailing website design","mobile detailing websites","online booking for detailers","local SEO for auto detailing","Google Business Profile"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Plans","itemListElement":[
- {"@type":"Offer","name":"Website Build","price":"399","priceCurrency":"USD","url":"https://groundwork-web.com/pricing/","description":"$99 due today, $300 when you approve the preview.","itemOffered":{"@type":"Service","name":"Auto detailing website build","description":"Custom mobile-first detailing website with packages and prices, gallery, reviews, service areas, embedded online booking, on-page SEO."}},
- {"@type":"Offer","name":"Host","price":"99","priceCurrency":"USD","url":"https://groundwork-web.com/pricing/","priceSpecification":{"@type":"UnitPriceSpecification","price":"99","priceCurrency":"USD","billingDuration":"P1M"},"itemOffered":{"@type":"Service","name":"Hosting and maintenance"}},
- {"@type":"Offer","name":"Grow","price":"199","priceCurrency":"USD","url":"https://groundwork-web.com/pricing/","priceSpecification":{"@type":"UnitPriceSpecification","price":"199","priceCurrency":"USD","billingDuration":"P1M"},"itemOffered":{"@type":"Service","name":"Hosting, monthly updates and Google Business Profile check-ins"}}]}},
-{"@type":"WebSite","@id":"https://groundwork-web.com/#website","url":"https://groundwork-web.com/","name":"GroundWork-Web","publisher":{"@id":"https://groundwork-web.com/#business"}},
-{"@type":"FAQPage","mainEntity":[
- {"@type":"Question","name":"How much does a car detailing website cost?","acceptedAnswer":{"@type":"Answer","text":"With us: $99 today, then $300 when you approve the preview, $399 total. Host is $99 a month or Grow is $199 a month, starting the month you go live. If you don't want the site after the revision, we refund the $99. Agencies quote $1,500 to $5,000 for the same site."}},
- {"@type":"Question","name":"Do I have to get on a call?","acceptedAnswer":{"@type":"Answer","text":"No. Start now is the $99 checkout and we go straight to work. Book the audit if you want a free 15-minute call first. Either way you see the site before the $300."}},
- {"@type":"Question","name":"What if I don't like the site?","acceptedAnswer":{"@type":"Answer","text":"You get one revision on a private preview. If you still don't want it, we refund the $99 and nothing else is charged. The $300 is only charged when you approve the site to go live."}},
- {"@type":"Question","name":"Can customers book online?","acceptedAnswer":{"@type":"Answer","text":"Yes. We embed the booking tool that fits you, such as Square Appointments, Booksy, Google, or Urable, so customers pick a package and a time on your site without texting you."}},
- {"@type":"Question","name":"Do you work with mobile detailers?","acceptedAnswer":{"@type":"Answer","text":"Yes. Mobile detailers get a service-area layout with the cities and zip codes you drive to, a we-come-to-you booking flow, and a Google Business Profile set up as a service-area business."}},
- {"@type":"Question","name":"Do I have to be in Texas?","acceptedAnswer":{"@type":"Answer","text":"No. GroundWork is based in Deer Park, Texas. The same build, booking, and monthly plans are open to detailers anywhere in the US."}},
- {"@type":"Question","name":"How long does it take?","acceptedAnswer":{"@type":"Answer","text":"About 7 days from the day we receive your logo, photos, services and prices. You get a private preview and one revision round before anything goes live."}},
- {"@type":"Question","name":"Who owns the domain and the site?","acceptedAnswer":{"@type":"Answer","text":"You own your domain. We register it in your name when you approve the site. If you cancel, we hand over the files after the final invoice."}}
-]}]}
+{
+"@context": "https://schema.org",
+"@graph": [
+{
+"@type": "BreadcrumbList",
+"itemListElement": [
+{
+"@type": "ListItem",
+"position": 1,
+"name": "GroundWork-Web",
+"item": "https://groundwork-web.com/"
+}
+]
+},
+{
+"@type": "ProfessionalService",
+"@id": "https://groundwork-web.com/#business",
+"name": "GroundWork-Web",
+"url": "https://groundwork-web.com/",
+"email": "groundworkweb@proton.me",
+"areaServed": {
+"@type": "Country",
+"name": "United States"
+},
+"address": {
+"@type": "PostalAddress",
+"addressLocality": "Deer Park",
+"addressRegion": "TX",
+"addressCountry": "US"
+}
+}
+]
+}
 </script>
 </head>
 <body class="has-bar">
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="site-header">
-  <div class="container">
-    <a class="logo" href="/" translate="no"><span class="logo-dot" aria-hidden="true"></span>GroundWork-Web</a>
-    <nav class="nav-links" id="primary-nav" aria-label="Primary">
+  <div class="wrap">
+    <a class="logo" href="/" translate="no"><span class="dot" aria-hidden="true"></span>GroundWork-Web</a>
+    <nav class="links" id="primary-nav" aria-label="Primary">
       <a href="/demos/">Demos</a>
       <a href="/pricing/">Pricing</a>
       <a href="/guides/get-found-on-google/">Guide</a>
       <a href="/audit/">Free audit</a>
-      <a class="mobile-only" href="/start/">Start now</a>
     </nav>
-    <div class="header-cta">
-      <a class="header-phone" data-gw-phone href="#" hidden></a>
-      <a class="btn btn-secondary btn-sm" href="/audit/">Book the audit</a>
-      <a class="btn btn-accent btn-sm" href="/start/">Start now</a>
-      <button class="icon-btn" type="button" data-theme-toggle aria-pressed="false">Dark</button>
-      <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+    <div class="header-end">
+      <a class="btn btn-buy btn-sm" href="/start/">Start now</a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
     </div>
   </div>
 </header>
 
 <main id="main">
-
 <section class="hero">
-  <div class="container">
-    <div class="hero-badge">Founding rate. $99 today, $300 when you approve.</div>
-    <h1>Auto detailing website design that gets shops booked.</h1>
-    <p class="lead mx-auto">Your prices on the page. Your booking tool built in. Live in about a week.</p>
-    <dl class="deal">
-      <div><dt>$99</dt><dd>today, to start</dd></div>
-      <div><dt>$300</dt><dd>when you approve it</dd></div>
-      <div><dt>$99 <small>or</small> $199</dt><dd>a month, once it is live</dd></div>
-    </dl>
-    <div class="hero-ctas">
-      <a class="choice choice-buy" href="/start/"><span class="choice-t">Start now</span><span class="choice-d">$99 today. We start this week.</span></a>
-      <a class="choice choice-call" href="/audit/"><span class="choice-t">Book the audit</span><span class="choice-d">Free 15 minutes. No pitch.</span></a>
-    </div>
-    <p class="hero-trust"><strong>No risk.</strong> You see the site before the $300. Don't want it? The $99 comes back.</p>
-  </div>
-</section>
-
-<section class="block section" id="pricing">
-  <div class="container">
-    <div class="section-header">
-      <span class="eyebrow">How the money works</span>
-      <h2>You pay in two parts. You see the site between them.</h2>
-      <p class="lead mx-auto">Most agencies want the whole fee before you see anything. We split it so the second payment only happens after you like what we built.</p>
-    </div>
-
-    <div class="price-grid">
-      <div class="price-card">
-        <div class="price-caption">Step 1</div>
-        <h3>We start this week</h3>
-        <div class="price-amount num">$99<span>today</span></div>
-        <p class="price-sub">Secure Stripe checkout.</p>
-        <ul class="price-features">
-          <li>Short brief: logo, photos, services, prices</li>
-          <li>Custom mobile-first site, days 1 to 4</li>
-          <li>Your booking tool embedded</li>
-          <li>Pages for your services and cities</li>
-        </ul>
-      </div>
-      <div class="price-card featured">
-        <div class="price-card-badge">Your call</div>
-        <div class="price-caption">Step 2</div>
-        <h3>Private preview</h3>
-        <div class="price-amount num">Still $99</div>
-        <p class="price-sub">Nothing goes live until you say so.</p>
-        <ul class="price-features">
-          <li>Preview link, days 5 to 6</li>
-          <li>One revision round</li>
-          <li>Don't want it? We refund the $99</li>
-          <li>No other charge, no questions</li>
-        </ul>
-      </div>
-      <div class="price-card">
-        <div class="price-caption">Step 3</div>
-        <h3>Approve and launch</h3>
-        <div class="price-amount num">$300<span>at approval</span></div>
-        <p class="price-sub">$399 total for the build.</p>
-        <ul class="price-features">
-          <li>Domain registered in your name</li>
-          <li>Site live and submitted to Google</li>
-          <li>Host or Grow starts the month you go live</li>
-          <li>Leave any time with 30 days notice</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="section-header" style="margin-top:56px;margin-bottom:28px">
-      <h2 style="font-size:clamp(1.5rem,3vw,2rem)">Then pick the monthly plan.</h2>
-      <p class="lead mx-auto">Billing starts the month your site goes live. Switch plans any month.</p>
-    </div>
-    <div class="price-grid two-col">
-      <div class="price-card">
-        <div class="price-caption">Host</div>
-        <h3>Keep the site and booking live</h3>
-        <div class="price-amount num">$99<span>/mo</span></div>
-        <ul class="price-features">
-          <li>Hosting, SSL, uptime monitoring</li>
-          <li>Booking embed kept working</li>
-          <li>Broken link, form, and SSL fixes</li>
-          <li>Cancel with 30 days notice</li>
-        </ul>
-        <a class="btn btn-secondary btn-block" href="/start/?plan=host">Start now<span class="sr-only"> on Host, $99 a month</span></a>
-      </div>
-      <div class="price-card featured">
-        <div class="price-card-badge">Most shops pick this</div>
-        <div class="price-caption">Grow</div>
-        <h3>We keep the site selling for you</h3>
-        <div class="price-amount num">$199<span>/mo</span></div>
-        <ul class="price-features">
-          <li>Everything in Host</li>
-          <li>2 to 3 updates a month: promos, prices, photos</li>
-          <li>Monthly Google Business Profile and SEO check-in</li>
-          <li>Priority support, one business day</li>
-        </ul>
-        <a class="btn btn-accent btn-block" href="/start/?plan=grow">Start now<span class="sr-only"> on Grow, $199 a month</span></a>
-      </div>
-    </div>
-
-    <div class="note-box">Founding rate. <strong>$99 today, $300 on approval, then $99 or $199 a month, locked for as long as you stay.</strong> Rates go up after the first wave of shops. Yours does not.</div>
-    <p class="fine center" style="margin-top:18px"><a href="/before-you-pay/">Preview, refund, and how you leave</a>, spelled out.</p>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <div class="section-header">
-      <h2>Why detailers lose jobs online</h2>
-      <p class="lead mx-auto">Not because the work is bad. Because the customer could not see a price or grab a time.</p>
-    </div>
-    <div class="card-grid">
-      <div class="card"><div class="card-icon">01</div><h3>Booked through DMs</h3><p>Instagram messages, texts at 9pm, "what do you charge?" Half of them are gone before you answer.</p></div>
-      <div class="card"><div class="card-icon">02</div><h3>Nowhere to book</h3><p>A Facebook page is not a website. If a customer can't see prices and pick a time, they call the next shop.</p></div>
-      <div class="card"><div class="card-icon">03</div><h3>Invisible on Google</h3><p>People search "car detailing near me" every day in your city. Without a real site and a clean Business Profile, you don't show up.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="section-cream section">
-  <div class="container split">
-    <div class="reveal">
-      <div class="phone"><img src="/assets/img/demo-bayou-booking.png" width="390" height="844" alt="Booking section of the Bayou Shine demo site on a phone: service area, package and vehicle pickers, a day field, and a Book now button." loading="lazy" decoding="async"></div>
-      <p class="phone-cap">Bayou Shine, one of four live demo shops.</p>
-    </div>
+  <div class="wrap">
     <div>
-      <div class="section-header left" style="margin-bottom:24px">
-        <h2>What you get for the $399</h2>
-        <p class="lead">A real site, built for one trade, that a customer can book on in under a minute.</p>
-      </div>
-      <ul class="check-list on-light">
-        <li><b>Packages with prices shown.</b> "Text for a quote" is where bookings go to die.</li>
-        <li><b>Your booking tool embedded.</b> Square, Booksy, Google, Urable, or what you already use.</li>
-        <li><b>A page per service and per city</b> you serve, so "ceramic coating [your city]" finds you.</li>
-        <li><b>Gallery and reviews</b> pulled from what you already have on your phone and Google.</li>
-        <li><b>On-page SEO and schema</b>, plus a Google Business Profile checklist.</li>
-        <li><b>Sticky Call and Book buttons</b> on mobile, because that is where customers are.</li>
-      </ul>
-      <div class="cta-row" style="margin-top:26px">
-        <a class="btn btn-accent" href="/start/">Start now</a>
-        <a class="link" href="/demos/">See all four demos</a>
-      </div>
+      <span class="eyebrow">Founding rate. $99 today, $300 when you approve.</span>
+      <h1>Auto detailing website design that gets shops <em>booked.</em></h1>
+      <p class="lead">Your prices on the page. Book, call, and text buttons built in. Live in about a week.</p>
+      <dl class="deal">
+        <div><dt>$99</dt><dd>today, to start</dd></div>
+        <div><dt>$300</dt><dd>when you approve it</dd></div>
+        <div><dt>$99 or $199</dt><dd>a month, once it is live</dd></div>
+      </dl>
+      <div class="ctas">
+  <a class="btn btn-buy" href="/start/">Start now<small>$99 today. We start this week.</small></a>
+  <a class="btn btn-ghost" href="/audit/">Book the audit<small>Free 15 minutes. No pitch.</small></a>
+</div>
+      <p class="trust"><strong>No risk.</strong> You see the site before the $300. Don't want it? The $99 comes back.</p>
+    </div>
+    <div class="phone-stage">
+      <div class="phone"><img class="shot" src="/assets/img/demo-bayou-booking.png" width="390" height="844" alt="Booking section of the Bayou Shine demo site on a phone: service area, package and vehicle pickers, a day field, and a Book now button." decoding="async"></div>
+      <p class="demo-cap">Bayou Shine, one of four demo shops. Fictional, fully working.</p>
     </div>
   </div>
 </section>
 
-<section class="section" id="how">
-  <div class="container">
-    <div class="section-header">
-      <h2>From $99 to live in about a week</h2>
-    </div>
-    <div class="steps">
-      <div class="step"><div class="step-num" aria-hidden="true">1</div><div><h3>Today <span class="amt num">$99</span></h3><p>Five-minute form, secure Stripe checkout, then a short brief for your logo, 10 to 20 photos, services, and prices.</p></div></div>
-      <div class="step"><div class="step-num" aria-hidden="true">2</div><div><h3>Days 1 to 4</h3><p>We design and build your site with your booking tool embedded and a page for each service and city.</p></div></div>
-      <div class="step"><div class="step-num" aria-hidden="true">3</div><div><h3>Days 5 to 6</h3><p>Private preview link. One revision round. If you don't want it, we refund the $99.</p></div></div>
-      <div class="step"><div class="step-num" aria-hidden="true">4</div><div><h3>Launch <span class="amt num">$300</span></h3><p>You approve, we register the domain in your name, go live, and submit the site to Google.</p></div></div>
-      <div class="step"><div class="step-num" aria-hidden="true">5</div><div><h3>Every month <span class="amt num">$99 or $199</span></h3><p>Host keeps it running. Grow adds updates and a Google Business Profile check-in. Cancel with 30 days notice.</p></div></div>
+<section class="cream">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="eyebrow">Why detailers lose jobs online</span><h2>Not because the work is bad.</h2><p class="lead">Because the customer could not see a price, or you could not pick up the phone.</p></div>
+    <div class="card-grid">
+      <div class="card rv"><span class="k">01</span><h3>The question comes at 9pm</h3><p>"What do you charge?" lands in your DMs after you are done for the day. By morning they have asked someone else.</p></div>
+      <div class="card rv"><span class="k">02</span><h3>Your hands are in a car</h3><p>You cannot answer a call or a text mid-detail. A page that shows prices and takes a booking answers for you.</p></div>
+      <div class="card rv"><span class="k">03</span><h3>Google shows a profile, not you</h3><p>People search "car detailing near me" every day in your city. Without a real site and a clean Business Profile, you are not in the results.</p></div>
     </div>
   </div>
 </section>
 
-<section class="section-cream section" id="demos">
-  <div class="container">
-    <div class="section-header">
-      <h2>Four live demo shops. Click around.</h2>
-      <p class="lead mx-auto">Fictional shops, real working sites. Yours gets your name, city, prices, and photos on the same bones.</p>
+<section class="price-block" id="pricing" data-ui="price-seen">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="eyebrow">How the money works</span><h2>You pay in two parts. You see the site between them.</h2><p class="lead">Most agencies want the whole fee before you see anything. We split it so the second payment only happens after you like what we built.</p></div>
+    <div class="timeline rv">
+      <div class="step"><div class="when">Step 1. Today</div><div class="amt">$99</div><p>Secure Stripe checkout. A short brief for your logo, photos, services and prices. We start this week.</p></div>
+      <div class="step"><div class="when">Step 2. Private preview</div><div class="amt">Still $99</div><p>Preview link in about a week. One revision. Nothing goes live until you say so. Don't want it? We refund the $99.</p></div>
+      <div class="step live"><div class="when">Step 3. Approve and launch</div><div class="amt">$300</div><p>$399 total for the build. We register the domain in your name, go live, and submit to Google.</p></div>
     </div>
-    <div class="demo-grid">
+    <h3 class="rv" style="margin:var(--s8) 0 var(--s4);font-size:1.8rem;text-transform:uppercase">Then pick the monthly plan</h3>
+    <p class="lead rv" style="margin-bottom:var(--s5)">Billing starts the month your site goes live. Switch plans any month.</p>
+    <div class="plan-grid two rv">
+      <div class="plan"><p class="cap">Host</p><h3>Keep the site and booking live</h3><div class="amt">$99<small>/mo</small></div><p class="sub">Starts the month you go live.</p>
+        <ul><li>Hosting, SSL, uptime monitoring</li><li>Booking embed kept working</li><li>Broken link, form, and SSL fixes</li><li>Cancel with 30 days notice</li></ul>
+        <a class="btn btn-ghost" href="/start/?plan=host">Start now<span class="sr-only"> on Host, $99 a month</span></a></div>
+      <div class="plan featured"><span class="rec">Recommended</span><p class="cap">Grow</p><h3>We keep the site selling for you</h3><div class="amt">$199<small>/mo</small></div><p class="sub">Starts the month you go live.</p>
+        <ul><li>Everything in Host</li><li>2 to 3 updates a month: promos, prices, photos</li><li>Monthly Google Business Profile and SEO check-in</li><li>Priority support, reply within one business day</li></ul>
+        <a class="btn btn-buy" href="/start/?plan=grow">Start now<span class="sr-only"> on Grow, $199 a month</span></a></div>
+    </div>
+    <p class="price-note">Founding rate: $99 today, $300 on approval, then $99 or $199 a month, locked for as long as you stay. Rates go up after the first wave of shops. <a href="/before-you-pay/">Preview, refund, and how you leave</a>, spelled out.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap two-col">
+    <div class="rv">
+      <span class="eyebrow">What you get for the $399</span>
+      <h2 style="margin:16px 0 var(--s4)">A site built for one trade.</h2>
+      <p class="lead">A customer can see your price, pick a package, and book in under a minute, or tap to call or text.</p>
+      <div class="ctas"><a class="btn btn-buy" href="/start/">Start now<small>$99 today</small></a><a class="btn btn-ghost" href="/demos/">See all four demos</a></div>
+    </div>
+    <ul class="check-list rv">
+      <li><b>Packages with prices shown.</b> "Text for a quote" is where bookings go to die.</li>
+      <li><b>Your booking tool embedded.</b> Square, Booksy, Google, Urable, or what you already use.</li>
+      <li><b>Call and text buttons</b> beside booking, because many customers still want to talk first.</li>
+      <li><b>A page per service and per city</b> you serve, so "ceramic coating [your city]" can find you.</li>
+      <li><b>Gallery and reviews</b> from what you already have on your phone and Google.</li>
+      <li><b>On-page SEO and schema</b>, plus a Google Business Profile checklist.</li>
+      <li><b>Sticky Call and Book buttons</b> on mobile, because that is where customers are.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="cream" id="how">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="eyebrow">How it works</span><h2>From $99 to live in about a week</h2></div>
+    <ol class="steps rv">
+      <li><h3>Today <span class="amt">$99</span></h3><p>Five-minute form, secure Stripe checkout, then a short brief for your logo, 10 to 20 photos, services, and prices.</p></li>
+      <li><h3>Days 1 to 4</h3><p>We design and build your site with your booking tool embedded and a page for each service and city.</p></li>
+      <li><h3>Days 5 to 6</h3><p>Private preview link. One revision round. If you don't want it, we refund the $99.</p></li>
+      <li><h3>Launch <span class="amt">$300</span></h3><p>You approve, we register the domain in your name, go live, and submit the site to Google.</p></li>
+      <li><h3>Every month <span class="amt">$99 or $199</span></h3><p>Host keeps it running. Grow adds updates and a Google Business Profile check-in. Cancel with 30 days notice.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="demos">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="eyebrow">Live demos</span><h2>Four demo shops. Click around.</h2><p class="lead">Fictional shops, real working sites. Yours gets your name, city, prices, and photos on the same bones.</p></div>
+    <div class="demo-grid rv">
       <article class="frame">
         <div class="frame-bar"><i></i><i></i><i></i><span>bayoushinedetail.com</span></div>
         <div class="frame-view" aria-hidden="true"><iframe src="/demos/bayou-shine/" title="Bayou Shine Detail demo" loading="lazy" tabindex="-1"></iframe></div>
         <div class="frame-meta">
           <div><h3>Bayou Shine Detail</h3><p>Fixed shop, Deer Park. Ceramic and interior.</p></div>
-          <div class="cta-row"><a class="btn btn-secondary" href="/demos/bayou-shine/">Open demo<span class="sr-only"> of Bayou Shine</span></a><a class="btn btn-accent" href="/start/?demo=bayou">Start now<span class="sr-only"> with the Bayou Shine look</span></a></div>
+          <div class="cta-row"><a class="btn btn-ghost btn-sm" href="/demos/bayou-shine/">Open demo<span class="sr-only"> of Bayou Shine</span></a><a class="btn btn-buy btn-sm" href="/start/?demo=bayou">Start now<span class="sr-only"> with the Bayou Shine look</span></a></div>
         </div>
       </article>
       <article class="frame">
@@ -250,7 +191,7 @@
         <div class="frame-view" aria-hidden="true"><iframe src="/demos/lone-star-mobile/" title="Lone Star Mobile Detail demo" loading="lazy" tabindex="-1"></iframe></div>
         <div class="frame-meta">
           <div><h3>Lone Star Mobile Detail</h3><p>Mobile, Houston metro. We come to you.</p></div>
-          <div class="cta-row"><a class="btn btn-secondary" href="/demos/lone-star-mobile/">Open demo<span class="sr-only"> of Lone Star Mobile</span></a><a class="btn btn-accent" href="/start/?demo=lonestar">Start now<span class="sr-only"> with the Lone Star look</span></a></div>
+          <div class="cta-row"><a class="btn btn-ghost btn-sm" href="/demos/lone-star-mobile/">Open demo<span class="sr-only"> of Lone Star</span></a><a class="btn btn-buy btn-sm" href="/start/?demo=lonestar">Start now<span class="sr-only"> with the Lone Star look</span></a></div>
         </div>
       </article>
       <article class="frame">
@@ -258,7 +199,7 @@
         <div class="frame-view" aria-hidden="true"><iframe src="/demos/clearline/" title="Clearline Detail demo" loading="lazy" tabindex="-1"></iframe></div>
         <div class="frame-meta">
           <div><h3>Clearline Detail</h3><p>Paint bay, Austin. Before-and-after slider.</p></div>
-          <div class="cta-row"><a class="btn btn-secondary" href="/demos/clearline/">Open demo<span class="sr-only"> of Clearline Detail</span></a><a class="btn btn-accent" href="/start/?demo=clearline">Start now<span class="sr-only"> with the Clearline look</span></a></div>
+          <div class="cta-row"><a class="btn btn-ghost btn-sm" href="/demos/clearline/">Open demo<span class="sr-only"> of Clearline</span></a><a class="btn btn-buy btn-sm" href="/start/?demo=clearline">Start now<span class="sr-only"> with the Clearline look</span></a></div>
         </div>
       </article>
       <article class="frame">
@@ -266,98 +207,87 @@
         <div class="frame-view" aria-hidden="true"><iframe src="/demos/briar-mobile/" title="Briar Mobile Detail demo" loading="lazy" tabindex="-1"></iframe></div>
         <div class="frame-meta">
           <div><h3>Briar Mobile Detail</h3><p>Mobile, Nashville. Package builder with a live total.</p></div>
-          <div class="cta-row"><a class="btn btn-secondary" href="/demos/briar-mobile/">Open demo<span class="sr-only"> of Briar Mobile</span></a><a class="btn btn-accent" href="/start/?demo=briar">Start now<span class="sr-only"> with the Briar look</span></a></div>
+          <div class="cta-row"><a class="btn btn-ghost btn-sm" href="/demos/briar-mobile/">Open demo<span class="sr-only"> of Briar</span></a><a class="btn btn-buy btn-sm" href="/start/?demo=briar">Start now<span class="sr-only"> with the Briar look</span></a></div>
         </div>
       </article>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="container">
-    <div class="section-header">
-      <h2>Built for how detailing gets searched</h2>
-      <p class="lead mx-auto">Each site gets a page per package and a page per city, so you show up for the combinations, not just your business name.</p>
+<section class="cream">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="eyebrow">Built to be found</span><h2>Built for how detailing gets searched</h2><p class="lead">Each site gets a page per package and a page per city, so you can show up for the combinations, not just your business name.</p></div>
+    <div class="intent rv">
+      <div><b>"car detailing near me"</b><p>Decided in the Google map pack: your profile and your site, working together.</p></div>
+      <div><b>"ceramic coating near me"</b><p>Your highest-ticket service. A page of its own, with its own prices and photos.</p></div>
+      <div><b>"mobile detailing near me"</b><p>Needs a service-area profile and city pages, not a storefront address.</p></div>
+      <div><b>"interior car detailing"</b><p>A single service people search for by name. It gets its own page and price.</p></div>
+      <div><b>"car detailing prices"</b><p>The money question. Sites that show prices answer it. Ours always do.</p></div>
+      <div><b>"paint correction [city]"</b><p>A premium service where a local page and real before-and-after photos matter.</p></div>
     </div>
-    <div class="card-grid">
-      <div class="card-dark"><div class="stat num">133,000</div><h3>car detailing near me</h3><p>Searches a month in the US. Decided in the Google map pack: your profile and your site, together.</p></div>
-      <div class="card-dark"><div class="stat num">22,000</div><h3>ceramic coating near me</h3><p>Highest ticket on the menu and barely contested in most cities.</p></div>
-      <div class="card-dark"><div class="stat num">19,000</div><h3>mobile detailing near me</h3><p>Needs a service-area profile and city pages, not a storefront address.</p></div>
-      <div class="card-dark"><div class="stat num">18,000</div><h3>interior car detailing</h3><p>The most-searched single service. Gets its own page with its own price.</p></div>
-      <div class="card-dark"><div class="stat">Prices</div><h3>car detailing prices</h3><p>The money question. Sites that show prices win it outright. Ours always do.</p></div>
-      <div class="card-dark"><div class="stat num">$14 to $28</div><h3>paint correction [city]</h3><p>What you would pay Google Ads per click. Why ranking on your own matters.</p></div>
-    </div>
-    <p class="fine center" style="margin-top:22px">US monthly search estimates, 2026, Google Ads data via DataForSEO. Your city's numbers are smaller and your competition is thinner. That is the point.</p>
+    <p class="cap">How that works, step by step: <a href="/guides/get-found-on-google/">the detailer's Google checklist</a>.</p>
   </div>
 </section>
 
-<section class="block section">
-  <div class="container">
-    <div class="section-header">
-      <h2>Versus the usual options</h2>
-    </div>
-    <div class="compare-table" role="table" aria-label="GroundWork compared with DIY builders and agencies">
-      <div class="compare-row compare-head" role="row"><div role="columnheader">&nbsp;</div><div role="columnheader">DIY builder</div><div role="columnheader">Freelancer or agency</div><div role="columnheader">GroundWork</div></div>
-      <div class="compare-row" role="row"><div class="col-label" role="rowheader">Upfront cost</div><div class="col-them" role="cell" data-label="DIY">$0 to $200 plus your weekends</div><div class="col-them" role="cell" data-label="Agency">$1,500 to $5,000+</div><div class="col-us" role="cell" data-label="GroundWork">$99 today, $399 total</div></div>
-      <div class="compare-row" role="row"><div class="col-label" role="rowheader">Monthly</div><div class="col-them" role="cell" data-label="DIY">$20 to $50, you maintain it</div><div class="col-them" role="cell" data-label="Agency">$150 to $400 retainer, if offered</div><div class="col-us" role="cell" data-label="GroundWork">$99 or $199, we maintain it</div></div>
-      <div class="compare-row" role="row"><div class="col-label" role="rowheader">Built for detailers</div><div class="col-them" role="cell" data-label="DIY">Generic template</div><div class="col-them" role="cell" data-label="Agency">Depends who you get</div><div class="col-us" role="cell" data-label="GroundWork">The only thing we do</div></div>
-      <div class="compare-row" role="row"><div class="col-label" role="rowheader">Online booking</div><div class="col-them" role="cell" data-label="DIY">Bolt-on, if you figure it out</div><div class="col-them" role="cell" data-label="Agency">Usually extra</div><div class="col-us" role="cell" data-label="GroundWork">Included in the build</div></div>
-      <div class="compare-row" role="row"><div class="col-label" role="rowheader">Time to live</div><div class="col-them" role="cell" data-label="DIY">Whenever you finish</div><div class="col-them" role="cell" data-label="Agency">4 to 8 weeks</div><div class="col-us" role="cell" data-label="GroundWork">About 7 days</div></div>
-      <div class="compare-row" role="row"><div class="col-label" role="rowheader">See it before you pay in full</div><div class="col-them" role="cell" data-label="DIY">You build it</div><div class="col-them" role="cell" data-label="Agency">Rarely</div><div class="col-us" role="cell" data-label="GroundWork">Yes. $300 only at approval</div></div>
-      <div class="compare-row" role="row"><div class="col-label" role="rowheader">How you leave</div><div class="col-them" role="cell" data-label="DIY">Cancel the builder</div><div class="col-them" role="cell" data-label="Agency">Whatever the contract says</div><div class="col-us" role="cell" data-label="GroundWork">30 days notice. No cancellation fee</div></div>
-    </div>
+<section>
+  <div class="wrap">
+    <div class="sec-head rv"><span class="eyebrow">The usual options</span><h2>How it compares</h2><p class="lead">Typical patterns, so you can compare honestly. Yours may differ.</p></div>
+    <table class="cmp rv">
+      <thead><tr><th>&nbsp;</th><th>DIY builder</th><th>Freelancer or agency</th><th>GroundWork</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Up front</th><td data-label="DIY builder">Low cost, but your weekends</td><td data-label="Agency">Often thousands, paid before you see it</td><td class="us" data-label="GroundWork">$99 today, $399 total</td></tr>
+        <tr><th scope="row">Monthly</th><td data-label="DIY builder">A builder fee, you maintain it</td><td data-label="Agency">A retainer, if offered</td><td class="us" data-label="GroundWork">$99 or $199, we maintain it</td></tr>
+        <tr><th scope="row">Built for detailers</th><td data-label="DIY builder">Generic template</td><td data-label="Agency">Depends who you get</td><td class="us" data-label="GroundWork">The only thing we do</td></tr>
+        <tr><th scope="row">Online booking</th><td data-label="DIY builder">Bolt-on, if you figure it out</td><td data-label="Agency">Often extra</td><td class="us" data-label="GroundWork">Included in the build</td></tr>
+        <tr><th scope="row">Time to live</th><td data-label="DIY builder">Whenever you finish</td><td data-label="Agency">Often weeks</td><td class="us" data-label="GroundWork">About 7 days</td></tr>
+        <tr><th scope="row">See it before the second payment</th><td data-label="DIY builder">You build it</td><td data-label="Agency">Rarely</td><td class="us" data-label="GroundWork">Yes. $300 only at approval</td></tr>
+        <tr><th scope="row">How you leave</th><td data-label="DIY builder">Cancel the builder</td><td data-label="Agency">Whatever the contract says</td><td class="us" data-label="GroundWork">30 days notice, no cancellation fee</td></tr>
+      </tbody>
+    </table>
   </div>
 </section>
 
-<section class="section">
-  <div class="container">
-    <div class="section-header">
-      <h2>Texas based. Taking clients anywhere.</h2>
-    </div>
-    <div class="trust-grid">
-      <div class="trust-item"><h3>Deer Park, not a call center</h3><p>We build from Deer Park, Texas. Your shop can be there or in any other state. Same site, same plan.</p></div>
-      <div class="trust-item"><h3>You own the domain</h3><p>Registered in your name when you approve the site. Cancel with 30 days notice and we hand over the files.</p></div>
-      <div class="trust-item"><h3>No risk until you approve</h3><p>Private preview, one revision. Don't want it? We refund the $99. The $300 is charged only at approval.</p></div>
-      <div class="trust-item"><h3>Stripe holds the card</h3><p>$99 today is a secure checkout. We never see your full card number. Monthly billing starts the month you go live.</p></div>
+<section class="cream" id="guarantee">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="eyebrow">The guarantee</span><h2>See it first, or the $99 comes back.</h2><p class="lead">Your site stays private until you approve it. Don't want it? We refund the $99. The $300 is charged only at approval.</p></div>
+    <div class="facts rv">
+      <div class="fact"><h3>Private preview</h3><p>Nothing is public and nothing is on your domain until you say yes. One revision is included.</p></div>
+      <div class="fact"><h3>The domain is yours</h3><p>Registered in your name when you approve. If you cancel, we hand over the files after the final invoice.</p></div>
+      <div class="fact"><h3>Stripe holds the card</h3><p>$99 at checkout today. The monthly plan starts the month the site goes live.</p></div>
     </div>
   </div>
 </section>
-
-<section class="section-cream section">
-  <div class="container">
-    <div class="section-header">
-      <h2>Honest answers</h2>
-    </div>
-    <div class="faq-list">
-      <details class="faq-item"><summary>How much does a car detailing website cost?</summary><p>With us: $99 today, then $300 when you approve the preview, $399 total. Host is $99 a month or Grow is $199 a month, starting the month you go live. If you don't want the site after the revision, we refund the $99. Agencies quote $1,500 to $5,000 for the same site.</p></details>
-      <details class="faq-item"><summary>Do I have to get on a call?</summary><p>No. Start now is the $99 checkout and we go straight to work. Book the audit if you want a free 15-minute call first. Either way you see the site before the $300.</p></details>
-      <details class="faq-item"><summary>What if I don't like the site?</summary><p>You get one revision on a private preview. If you still don't want it, we refund the $99 and nothing else is charged. The $300 is only charged when you approve the site to go live.</p></details>
-      <details class="faq-item"><summary>Can customers book online?</summary><p>Yes. We embed the booking tool that fits you, such as Square Appointments, Booksy, Google, or Urable, so customers pick a package and a time on your site without texting you.</p></details>
-      <details class="faq-item"><summary>Do you work with mobile detailers?</summary><p>Yes. Mobile detailers get a service-area layout with the cities and zip codes you drive to, a we-come-to-you booking flow, and a Google Business Profile set up as a service-area business.</p></details>
-      <details class="faq-item"><summary>Do I have to be in Texas?</summary><p>No. GroundWork is based in Deer Park, Texas. The same build, booking, and monthly plans are open to detailers anywhere in the US.</p></details>
-      <details class="faq-item"><summary>How long does it take?</summary><p>About 7 days from the day we receive your logo, photos, services and prices. You get a private preview and one revision round before anything goes live. <a href="/guides/get-found-on-google/">How the site gets found afterwards</a>.</p></details>
-      <details class="faq-item"><summary>Who owns the domain and the site?</summary><p>You own your domain. We register it in your name when you approve the site. If you cancel, we hand over the files after the final invoice.</p></details>
+<section>
+  <div class="wrap">
+    <div class="note rv">
+      <span class="eyebrow">Who builds it</span>
+      <p class="note-q">I'm Cyrus Wilburn. I run GroundWork-Web from Deer Park, Texas, and I build one thing: websites for auto detailers, with your prices on the page and a way to book.</p>
+      <p>Your shop can be in Texas or any other state. You see the site before you pay the second part, and questions go straight to me at <a href="mailto:groundworkweb@proton.me">groundworkweb@proton.me</a>.</p>
+      <p class="fine">Cyrus Wilburn, GroundWork-Web, Deer Park, TX</p>
     </div>
   </div>
 </section>
 
-<section class="section" id="contact">
-  <div class="container">
-    <div class="section-header">
-      <h2>Stop losing jobs in the DMs.</h2>
-      <p class="lead mx-auto">Two ways in. Buy it now, or talk to us first. Both are fine.</p>
-    </div>
-    <div class="contact-wrap">
-      <div class="contact-text-cta">
-        <h3>Start now for $99</h3>
-        <p>Five-minute form, secure Stripe checkout, and we start this week. You see the site before the $300. Don't want it? The $99 comes back.</p>
-        <a class="btn btn-accent btn-block" href="/start/">Start now</a>
-        <a class="btn btn-outline-light btn-block" href="/pricing/">See full pricing</a>
-        <p class="fine">Founding rate, locked for as long as you stay.</p>
+<section>
+  <div class="wrap">
+    <div class="sec-head rv"><span class="eyebrow">Honest answers</span><h2>Questions</h2></div>
+    <div class="faq"><details><summary>How much does a car detailing website cost?</summary><p>With us: $99 today, then $300 when you approve the preview, $399 total. Host is $99 a month or Grow is $199 a month, starting the month you go live. If you don't want the site after the revision, we refund the $99.</p></details><details><summary>Do I have to get on a call?</summary><p>No. Start now is the $99 checkout and we go straight to work. Book the audit if you want a free 15-minute call first. Either way you see the site before the $300.</p></details><details><summary>What if I don't like the site?</summary><p>You get one revision on a private preview. If you still don't want it, we refund the $99 and nothing else is charged. The $300 is only charged when you approve the site to go live.</p></details><details><summary>Can customers book online?</summary><p>Yes. We embed the booking tool that fits you, such as Square Appointments, Booksy, Google, or Urable, so customers pick a package and a time on your site. Call and text buttons sit beside it for the customers who would rather talk.</p></details><details><summary>Do you work with mobile detailers?</summary><p>Yes. Mobile detailers get a service-area layout with the cities and zip codes you drive to, a we-come-to-you booking flow, and a Google Business Profile set up as a service-area business.</p></details><details><summary>Do I have to be in Texas?</summary><p>No. GroundWork is based in Deer Park, Texas. The same build, booking, and monthly plans are open to detailers anywhere in the US.</p></details><details><summary>How long does it take?</summary><p>About 7 days from the day we receive your logo, photos, services and prices. You get a private preview and one revision round before anything goes live. <a href="/guides/get-found-on-google/">How the site gets found afterwards</a>.</p></details><details><summary>Who owns the domain and the site?</summary><p>You own your domain. We register it in your name when you approve the site. If you cancel, we hand over the files after the final invoice.</p></details></div>
+  </div>
+</section>
+
+<section class="cream" id="contact">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="eyebrow">Next step</span><h2>Stop losing jobs in the DMs.</h2><p class="lead">Two ways in. Buy it now, or talk to us first. Both are fine.</p></div>
+    <div class="start-layout">
+      <div class="summary rv">
+        <h2>Start now for $99</h2>
+        <p class="fine" style="color:var(--block-mute);font-size:1rem;margin-bottom:var(--s4)">Five-minute form, secure Stripe checkout, and we start this week. You see the site before the $300. Don't want it? The $99 comes back.</p>
+        <a class="btn btn-buy btn-block" href="/start/">Start now</a>
+        <p class="fine" style="margin-top:var(--s4)"><a href="/pricing/">See full pricing</a>. Founding rate, locked for as long as you stay.</p>
       </div>
-      <form class="contact-form form" data-gw-form="audit" aria-labelledby="audit-heading" novalidate>
-        <h3 id="audit-heading">Or book the free audit</h3>
-        <p>Fifteen minutes. We look at your Google listing, socials, and whatever site you have, and tell you what is costing you bookings. <a class="link" href="/audit/">Pick a time on the calendar</a>, or send this and we reply within one business day.</p>
+      <form class="form card rv" data-gw-form="audit" aria-labelledby="audit-heading" novalidate>
+        <h2 id="audit-heading">Or book the free audit</h2>
+        <p style="color:var(--ink-2)">Fifteen minutes. We look at your Google listing, socials, and whatever site you have, and tell you what is costing you bookings. <a class="link" href="/audit/">Pick a time on the calendar</a>, or send this and we reply within one business day.</p>
         <div class="row">
           <label>Shop name<input name="shop" required autocomplete="organization"></label>
           <label>City<input name="city" required autocomplete="address-level2"></label>
@@ -366,43 +296,38 @@
         <label>Email<input name="email" type="email" required autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false"></label>
         <label>Where customers find you today <span class="opt">(optional)</span><input name="links" placeholder="Instagram, Facebook, Google, a current site"></label>
         <input type="text" name="company_url" tabindex="-1" autocomplete="off" hidden aria-hidden="true">
-        <button class="btn btn-primary btn-block" type="submit">Request the audit</button>
+        <button class="btn btn-ghost btn-block" type="submit">Request the audit</button>
         <p class="form-status" role="status" aria-live="polite"></p>
-        <p class="fine">No spam, no contract. We reply from a real inbox.</p>
+        <p class="fine">No spam, no contract. We reply from a real inbox. We use what you send to reply, nothing else. <a href="/privacy/">Privacy</a>.</p>
       </form>
     </div>
   </div>
 </section>
-
 </main>
 
-<footer>
-  <div class="container">
-    <div class="footer-top">
-      <div>
-        <div class="logo" translate="no"><span class="logo-dot" aria-hidden="true"></span>GroundWork-Web</div>
-        <p>Auto detailing websites with prices and booking. Built in Deer Park, Texas, for mobile detailers and shops anywhere in the US, including Houston, Dallas-Fort Worth, San Antonio, and Austin.</p>
-      </div>
-      <div class="footer-contact">
-        <a data-gw-email href="#">groundworkweb@proton.me</a>
-        <a data-gw-phone href="#" hidden></a>
-        <a href="/before-you-pay/">Preview, refund, and how you leave</a>
-      </div>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <div class="logo" translate="no"><span class="dot" aria-hidden="true"></span>GroundWork-Web</div>
+      <p>Auto detailing websites with prices and booking. Built in Deer Park, Texas, for mobile detailers and shops anywhere in the US.</p>
     </div>
-    <div class="footer-bottom">
-      <span>© <span data-year></span> GroundWork-Web. Deer Park, TX.</span>
-      <nav aria-label="Footer"><a href="/demos/">Demos</a><a href="/pricing/">Pricing</a><a href="/offer/">Offer</a><a href="/guides/get-found-on-google/">Get found</a><a href="/audit/">Audit</a><a href="/start/">Start</a><a href="/privacy/">Privacy</a></nav>
+    <div class="footer-contact">
+      <a href="mailto:groundworkweb@proton.me">groundworkweb@proton.me</a>
+      <a href="/before-you-pay/">Preview, refund, and how you leave</a>
     </div>
+    <nav class="footer-nav" aria-label="Footer"><a href="/demos/">Demos</a><a href="/pricing/">Pricing</a><a href="/offer/">Offer</a><a href="/guides/get-found-on-google/">Get found</a><a href="/audit/">Audit</a><a href="/start/">Start</a><a href="/privacy/">Privacy</a></nav>
+    <span class="fine">&copy; <span data-year>2026</span> GroundWork-Web. Deer Park, TX.</span>
   </div>
 </footer>
 
-<div class="mobile-cta-bar" aria-label="Quick actions">
-  <a class="btn btn-accent" href="/start/">Start now</a>
-  <a class="btn btn-secondary" href="/audit/">Book the audit</a>
+<div class="bar" aria-label="Quick actions">
+  <a class="btn btn-buy" href="/start/">Start now</a>
+  <a class="btn btn-ghost" href="/audit/">Book the audit</a>
 </div>
 
-<script src="/assets/js/config.js?v=20260928c"></script>
-<script src="/assets/js/main.js?v=20260928c"></script>
-<script src="/assets/js/analytics.js?v=20260928c" defer></script>
+<script src="/assets/js/config.js?v=3.1"></script>
+<script src="/assets/ds/ui.js?v=3.1"></script>
+<script src="/assets/ds/site.js?v=3.1"></script>
+<script src="/assets/js/analytics.js?v=3.1" defer></script>
 </body>
 </html>

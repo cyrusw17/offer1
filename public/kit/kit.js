@@ -1,4 +1,4 @@
-/* GroundWork Detailer Kit — demo behaviour */
+/* GroundWork Detailer Kit: demo behavior. Stores nothing in the browser. */
 (function () {
   // Demo booking widget: purely illustrative. On a client site this block is
   // replaced by the embedded Square / Booksy / Google booking iframe.
@@ -34,14 +34,20 @@
     });
   }
 
-  // Carry GroundWork attribution into the chrome-bar links
+  // Carry GroundWork campaign tags (already in this page's URL) into the demo-bar links. No storage.
   try {
-    const attr = JSON.parse(localStorage.getItem("gw_attr") || "{}");
-    const q = new URLSearchParams(attr).toString();
-    if (q) document.querySelectorAll(".gw-bar a").forEach(a => {
+    const q = new URLSearchParams(location.search);
+    const keep = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "city"];
+    document.querySelectorAll(".gw-bar a").forEach(a => {
       const u = new URL(a.getAttribute("href"), location.origin);
-      new URLSearchParams(q).forEach((v, k) => { if (!u.searchParams.has(k)) u.searchParams.set(k, v); });
+      keep.forEach(k => { if (q.get(k) && !u.searchParams.has(k)) u.searchParams.set(k, q.get(k)); });
       a.href = u.pathname + u.search;
     });
   } catch (_) {}
+
+  // Before/after compare (range input drives --pos).
+  document.querySelectorAll("[data-k-compare]").forEach(el => {
+    const rg = el.querySelector('input[type="range"]');
+    if (rg) rg.addEventListener("input", () => el.style.setProperty("--pos", rg.value + "%"));
+  });
 })();

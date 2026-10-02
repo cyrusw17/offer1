@@ -25,7 +25,11 @@ $in = json_decode((string)$raw, true);
 if (!is_array($in)) { http_response_code(400); exit; }
 
 $type = $in['type'] ?? '';
-if (!in_array($type, ['pageview', 'click', 'submit'], true)) { http_response_code(400); exit; }
+if (!in_array($type, ['pageview', 'click', 'submit', 'ui'], true)) { http_response_code(400); exit; }
+
+// Interaction events: fixed whitelist, never free text. Keep in sync with docs/redesign/TRACKING.md.
+const GW_UI_LABELS = ['plan_host', 'plan_grow', 'compare_use', 'demo_package', 'demo_book', 'price_seen'];
+if ($type === 'ui' && !in_array((string)($in['label'] ?? ''), GW_UI_LABELS, true)) { http_response_code(400); exit; }
 
 $path = gw_clean_path((string)($in['path'] ?? '/'));
 $ref  = gw_host_only((string)($in['ref'] ?? ''));

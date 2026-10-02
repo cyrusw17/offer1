@@ -1,6 +1,7 @@
 /*
   GroundWork first-party analytics (browser side).
-  - Sends: page views, link clicks, form submits. Nothing else.
+  - Sends: page views, link clicks, form submits, and a fixed list of interaction counts
+    (see docs/redesign/TRACKING.md). Nothing else.
   - Stores nothing in the browser. No cookies, no IDs.
   - Stays silent if the visitor has Global Privacy Control or Do Not Track on.
   Server side: /api/track.php (see /privacy/).
@@ -25,6 +26,9 @@
   // Page view
   send({ type: "pageview" });
 
+  // Interaction counts from the design system (ui.js). Label must be on the server whitelist; no visitor input.
+  window.GW_track = function (label) { send({ type: "ui", label: String(label).slice(0, 40) }); };
+
   // Every link click (internal, external, tel:, sms:, #anchors). Label = data-track or visible text.
   document.addEventListener("click", function (e) {
     var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
@@ -33,9 +37,7 @@
     send({ type: "click", target: a.href, label: label });
   }, true);
 
-  // Lead form submits (audit / start). Demo booking widgets are not counted.
-  document.addEventListener("submit", function (e) {
-    var f = e.target;
-    if (f && f.getAttribute && f.getAttribute("data-gw-form")) send({ type: "submit", label: f.getAttribute("data-gw-form") });
-  }, true);
+  // Lead form submits are counted by site.js only after the form was actually delivered
+  // (never on a failed validation). Label is the form name; nothing the visitor typed is sent.
+  window.GW_submit = function (label) { send({ type: "submit", label: String(label).slice(0, 40) }); };
 })();
